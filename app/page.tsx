@@ -6,6 +6,7 @@ import './globals.css';
 
 const Page = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   
   useEffect(() => {
     // Check if the device is mobile
@@ -33,7 +34,7 @@ const Page = () => {
           style={{
             width: isMobile ? '100%' : '1920px',
             height: isMobile ? '100%' : '1080px',
-            left: '50%',
+            left: '50%',  
             transform: 'translateX(-50%)',
             top: '0',
           }}
@@ -99,16 +100,34 @@ const Page = () => {
             ) : (
                 <>
                 {/* Desktop Layout */}
-                <div className="absolute top-[16%] left-[54%]">
-                <Image
-                src="/images/rumah.webp"
-                alt="Gedung DPR"
-                width={280}
-                height={210}
-                className="hover-outline cursor-pointer"
-                priority
-                />
+                <div 
+                  className="absolute top-[16%] left-[54%] cursor-pointer"
+                  onClick={() => setShowModal(true)}
+                >
+                  <Image
+                  src="/images/rumah.webp"
+                  alt="Gedung DPR"
+                  width={280}
+                  height={210}
+                  className="hover-outline"
+                  priority
+                  />
                 </div>
+
+                {showModal && (
+                  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+                  <div className="bg-white p-6 rounded-lg shadow-lg">
+                    <h2 className="text-xl font-bold mb-4">Modal Title</h2>
+                    <p className="mb-4">This is a dummy modal content.</p>
+                    <button
+                    className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                    onClick={() => setShowModal(false)}
+                    >
+                    Close
+                    </button>
+                  </div>
+                  </div>
+                )}
 
                 <div className="absolute top-[59%] left-[55%]">
                 <Image
