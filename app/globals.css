@@ -10,3 +10,27 @@ canvas {
   width: 100%;
   height: auto;
 }
+
+.responsive-image {
+  position: absolute;
+}
+
+.responsive-image {
+  position: absolute;
+}
+
+@media (max-width: 768px) {
+  .responsive-image {
+    left: 5vw !important; /* Adjust as needed */
+    top: 50vh !important; /* Adjust as needed */
+  }
+}
+
+@media (max-width: 480px) {
+  .responsive-image {
+    left: 2vw !important; /* Adjust as needed */
+    top: 40vh !important; /* Adjust as needed */
+  }
+}
+
+
