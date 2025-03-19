@@ -2,178 +2,481 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import './globals.css';
+import "./globals.css";
+import { Jersey_15 } from "next/font/google";
+import { Dekko } from "next/font/google";
+
+const jersey15 = Jersey_15({
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
+const dekko = Dekko({
+  subsets: ["latin"],
+  weight: ["400"],
+});
 
 const Page = () => {
   const [isMobile, setIsMobile] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-  
+  const [showProfil, setshowProfil] = useState(false);
+  const [showDPR, setshowDPR] = useState(false);
+  const [showSAJ, setshowSAJ] = useState(false);
+  const [showGallery, setshowGallery] = useState(false);
+  const [showArticle, setshowArticle] = useState(false);
+  const [showKunjungan, setshowKunjungan] = useState(false);
+
   useEffect(() => {
     // Check if the device is mobile
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
+
     // Initial check
     checkMobile();
-    
+
     // Add event listener for window resize
-    window.addEventListener('resize', checkMobile);
-    
+    window.addEventListener("resize", checkMobile);
+
     // Clean up event listener
-    return () => window.removeEventListener('resize', checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   return (
-    <div className="flex justify-center items-center w-full h-screen">
+    <div className="flex h-screen w-full items-center justify-center">
       {/* Main container with viewport dimensions */}
-      <div className="relative w-screen h-screen overflow-hidden">
+      <div className="relative h-screen w-screen overflow-hidden">
         {/* Container with fixed dimensions that holds both background and buildings */}
-        <div 
-          className="absolute" 
+        <div
+          className="absolute"
           style={{
-            width: isMobile ? '100%' : '1920px',
-            height: isMobile ? '100%' : '1080px',
-            left: '50%',  
-            transform: 'translateX(-50%)',
-            top: '0',
+            width: isMobile ? "100%" : "1920px",
+            height: isMobile ? "100%" : "1080px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            top: "0",
           }}
         >
-            {/* Background Image as part of the fixed container */}
-            <div className="absolute top-0 left-0 w-full h-full">
+          {/* Background Image as part of the fixed container */}
+          <div className="absolute left-0 top-0 size-full">
             <Image
               src="/images/bg-yes1.gif"
               alt="Background Image"
               layout="fill"
               objectFit="cover"
-              priority  
+              priority
             />
-            </div>
-            
-            {isMobile ? (
-              <>
+          </div>
+
+          {isMobile ? (
+            <>
               {/* Mobile Layout */}
-              <div className="absolute top-[18%] left-[54%]">
+              <div
+                className="absolute left-[54%] top-[16%] cursor-pointer"
+                onClick={() => setshowProfil(true)}
+              >
                 <Image
-                src="/images/dpr.webp"
-                alt="Gedung DPR"
-                width={200}
-                height={210}
-                className="hover-outline cursor-pointer"
-                priority
-                />
-                </div>
-                
-                <div className="absolute top-[2%] left-[36%]">
-                <Image
-                src="/images/rumah.webp"
-                alt="Rumah"
-                width={200}
-                height={192}
-                className="hover-outline cursor-pointer"
-                priority
-                />
-                </div>
-                
-                <div className="absolute top-[35%] left-[36%]">
-                <Image
-                src="/images/galeri.webp"
-                alt="Gedung Galeri"
-                width={200}
-                height={192}
-                className="hover-outline cursor-pointer"
-                priority
-                />
-                </div>
-                
-                <div className="absolute top-[27%] left-[46%]">
-                <Image
-                src="/images/suara-saj.webp"
-                alt="Rumah NPC"
-                width={200}
-                height={192}
-                className="hover-outline cursor-pointer"
-                priority
-                />
-                </div>
-              </>
-            ) : (
-                <>
-                {/* Desktop Layout */}
-                <div 
-                  className="absolute top-[16%] left-[54%] cursor-pointer"
-                  onClick={() => setShowModal(true)}
-                >
-                  <Image
                   src="/images/rumah.webp"
                   alt="Gedung DPR"
                   width={280}
                   height={210}
                   className="hover-outline"
                   priority
-                  />
-                </div>
+                />
+              </div>
 
-                {showModal && (
-                  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-                  <div className="bg-white p-6 rounded-lg shadow-lg">
-                    <h2 className="text-xl font-bold mb-4">Modal Title</h2>
-                    <p className="mb-4">This is a dummy modal content.</p>
-                    <button
-                    className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                    onClick={() => setShowModal(false)}
+              {showProfil && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+                  <div
+                    className="rounded-lg bg-white p-6 shadow-lg"
+                    style={{
+                      outline: "5px solid black",
+                      outlineOffset: "-3px",
+                    }}
+                  >
+                    {/* Applying the font here */}
+                    <h2
+                      className={`${jersey15.className} mb-4 text-center text-5xl font-bold text-white`}
+                      style={{
+                        textShadow:
+                          "3px 3px 0 black, -3px 3px 0 black, 3px -3px 0 black, -3px -3px 0 black",
+                      }}
                     >
-                    Close
-                    </button>
+                      Profil
+                    </h2>
+                    <div className="flex justify-center">
+                      <Image
+                        src="/images/profil.webp"
+                        alt="Profile Picture"
+                        width={300}
+                        height={245}
+                        className=""
+                        priority
+                      />
+                    </div>
+                    <p className={`${dekko.className} mb-6`}>
+                      Profil Teh Sarifah beserta kisah<br></br> perjalanannya
+                      dari Bacaleg menjadi<br></br> Anggota DPR. Anda mau masuk
+                      ke Profil?
+                    </p>
+                    <div className="flex justify-center">
+                      <button
+                        className={`${jersey15.className} items-center rounded bg-teal-500 px-12 py-2 text-xl text-white outline outline-2 outline-black hover:bg-teal-600`}
+                        onClick={() => setshowProfil(false)}
+                      >
+                        Masuk Profil
+                      </button>
+                    </div>
                   </div>
-                  </div>
-                )}
+                </div>
+              )}
 
-                <div className="absolute top-[59%] left-[55%]">
+              <div className="absolute left-[55%] top-[59%]">
                 <Image
-                src="/images/rumah.webp"
-                alt="Gedung DPR"
-                width={280}
-                height={210}
-                className="hover-outline cursor-pointer"
-                priority
+                  src="/images/rumah.webp"
+                  alt="Gedung DPR"
+                  width={280}
+                  height={210}
+                  className="hover-outline cursor-pointer"
+                  priority
                 />
-                </div>
-                
-                <div className="absolute top-[2%] left-[30%]">
+              </div>
+
+              <div className="absolute left-[30%] top-[2%]">
                 <Image
-                src="/images/dpr.webp"
-                alt="Rumah"
-                width={290}
-                height={192}
-                className="hover-outline cursor-pointer"
-                priority
+                  src="/images/dpr.webp"
+                  alt="Rumah"
+                  width={290}
+                  height={192}
+                  className="hover-outline cursor-pointer"
+                  priority
                 />
-                </div>
-                
-                <div className="absolute top-[33%] left-[35%]">
+              </div>
+
+              <div className="absolute left-[35%] top-[33%]">
                 <Image
-                src="/images/galeri.webp"
-                alt="Gedung Galeri"
-                width={280}
-                height={192}
-                className="hover-outline cursor-pointer"
-                priority
+                  src="/images/galeri.webp"
+                  alt="Gedung Galeri"
+                  width={280}
+                  height={192}
+                  className="hover-outline cursor-pointer"
+                  priority
                 />
-                </div>
-                
-                <div className="absolute top-[27%] left-[46%]">
+              </div>
+
+              <div className="absolute left-[46%] top-[27%]">
                 <Image
-                src="/images/suara-saj.webp"
-                alt="Rumah NPC"
-                width={230}
-                height={192}
-                className="hover-outline cursor-pointer"
-                priority
+                  src="/images/suara-saj.webp"
+                  alt="Suara SAJ"
+                  width={230}
+                  height={192}
+                  className="hover-outline cursor-pointer"
+                  priority
                 />
+              </div>
+            </>
+          ) : (
+            <>
+              {/* Desktop Layout */}
+              <div
+                className="absolute left-[54%] top-[16%] cursor-pointer"
+                onClick={() => setshowProfil(true)}
+              >
+                <Image
+                  src="/images/rumah.webp"
+                  alt="Profil"
+                  width={280}
+                  height={210}
+                  className="hover-outline"
+                  priority
+                />
+              </div>
+
+              {showProfil && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+                  <div
+                    className="rounded-lg bg-white p-6 shadow-lg"
+                    style={{
+                      outline: "5px solid black",
+                      outlineOffset: "-3px",
+                    }}
+                  >
+                    {/* Applying the font here */}
+                    <h2
+                      className={`${jersey15.className} mb-4 text-center text-5xl font-bold text-white`}
+                      style={{
+                        textShadow:
+                          "3px 3px 0 black, -3px 3px 0 black, 3px -3px 0 black, -3px -3px 0 black",
+                      }}
+                    >
+                      Profil
+                    </h2>
+                    <div className="flex justify-center">
+                      <Image
+                        src="/images/profil.webp"
+                        alt="Profile Picture"
+                        width={300}
+                        height={245}
+                        className=""
+                        priority
+                      />
+                    </div>
+                    <p className={`${dekko.className} mb-6`}>
+                      Profil Teh Sarifah beserta kisah<br></br> perjalanannya
+                      dari Bacaleg menjadi<br></br> Anggota DPR. Anda mau masuk
+                      ke Profil?
+                    </p>
+                    <div className="flex justify-center">
+                      <button
+                        className={`${jersey15.className} items-center rounded bg-teal-500 px-12 py-2 text-xl text-white outline outline-2 outline-black hover:bg-teal-600`}
+                        onClick={() => setshowProfil(false)}
+                      >
+                        Masuk Profil
+                      </button>
+                    </div>
+                  </div>
                 </div>
-                </>
-            )}
+              )}
+
+              {showDPR && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+                  <div
+                    className="rounded-lg bg-white p-6 shadow-lg"
+                    style={{
+                      outline: "5px solid black",
+                      outlineOffset: "-3px",
+                    }}
+                  >
+                    {/* Applying the font here */}
+                    <h2
+                      className={`${jersey15.className} mb-4 text-center text-5xl font-bold text-white`}
+                      style={{
+                        textShadow:
+                          "3px 3px 0 black, -3px 3px 0 black, 3px -3px 0 black, -3px -3px 0 black",
+                      }}
+                    >
+                      DPR RI
+                    </h2>
+                    <div className="flex justify-center">
+                      <Image
+                        src="/images/dpr-1.webp"
+                        alt="Profile Picture"
+                        width={300}
+                        height={245}
+                        className=""
+                        priority
+                      />
+                    </div>
+                    <p className={`${dekko.className} mb-6`}>
+                      Sebagai Anggota DPR RI, Teh Sarifah<br></br> menjabat pada
+                      bagian Komisi I dan BAKN. <br></br> Anda mau masuk ke DPR
+                      RI?
+                    </p>
+                    <div className="flex justify-center">
+                      <button
+                        className={`${jersey15.className} items-center rounded bg-teal-500 px-12 py-2 text-xl text-white outline outline-2 outline-black hover:bg-teal-600`}
+                        onClick={() => setshowDPR(false)}
+                      >
+                        Masuk DPR RI
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {showSAJ && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+                  <div
+                    className="rounded-lg bg-white p-6 shadow-lg"
+                    style={{
+                      outline: "5px solid black",
+                      outlineOffset: "-3px",
+                    }}
+                  >
+                    {/* Applying the font here */}
+                    <h2
+                      className={`${jersey15.className} mb-4 text-center text-5xl font-bold text-white`}
+                      style={{
+                        textShadow:
+                          "3px 3px 0 black, -3px 3px 0 black, 3px -3px 0 black, -3px -3px 0 black",
+                      }}
+                    >
+                      Suara SAJ
+                    </h2>
+                    <div className="flex justify-center">
+                      <Image
+                        src="/images/suara-saj-1.webp"
+                        alt="Profile Picture"
+                        width={300}
+                        height={245}
+                        className=""
+                        priority
+                      />
+                    </div>
+                    <p className={`${dekko.className} mb-6`}>
+                      Suara SAJ menyampaikan kata-kata bijak Teh<br></br>
+                      Sarifah yang mewakili aspirasi rakyat. <br></br>
+                      Anda mau masuk Suara SAJ?
+                    </p>
+                    <div className="flex justify-center">
+                      <button
+                        className={`${jersey15.className} items-center rounded bg-teal-500 px-12 py-2 text-xl text-white outline outline-2 outline-black hover:bg-teal-600`}
+                        onClick={() => setshowSAJ(false)}
+                      >
+                        Masuk Suara SAJ
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+              {showGallery && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+                  <div
+                    className="rounded-lg bg-white p-6 shadow-lg"
+                    style={{
+                      outline: "5px solid black",
+                      outlineOffset: "-3px",
+                    }}
+                  >
+                    {/* Applying the font here */}
+                    <h2
+                      className={`${jersey15.className} mb-4 text-center text-5xl font-bold text-white`}
+                      style={{
+                        textShadow:
+                          "3px 3px 0 black, -3px 3px 0 black, 3px -3px 0 black, -3px -3px 0 black",
+                      }}
+                    >
+                      Galeri
+                    </h2>
+                    <div className="flex justify-center">
+                      <Image
+                        src="/images/galeri-1.webp"
+                        alt="Profile Picture"
+                        width={300}
+                        height={245}
+                        className=""
+                        priority
+                      />
+                    </div>
+                    <p className={`${dekko.className} mb-6`}>
+                      Galeri Teh Sarifah berisikan berbagai<br></br>
+                      dokumentasi seperti foto-foto kegiatannya.<br></br>
+                      Anda mau masuk Galeri?
+                    </p>
+                    <div className="flex justify-center">
+                      <button
+                        className={`${jersey15.className} items-center rounded bg-teal-500 px-12 py-2 text-xl text-white outline outline-2 outline-black hover:bg-teal-600`}
+                        onClick={() => setshowGallery(false)}
+                      >
+                        Masuk Galeri
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {showArticle && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+                  <div
+                    className="rounded-lg bg-white p-6 shadow-lg"
+                    style={{
+                      outline: "5px solid black",
+                      outlineOffset: "-3px",
+                    }}
+                  >
+                    {/* Applying the font here */}
+                    <h2
+                      className={`${jersey15.className} mb-4 text-center text-5xl font-bold text-white`}
+                      style={{
+                        textShadow:
+                          "3px 3px 0 black, -3px 3px 0 black, 3px -3px 0 black, -3px -3px 0 black",
+                      }}
+                    >
+                      Berita
+                    </h2>
+                    <div className="flex justify-center">
+                      <Image
+                        src="/images/berita-1.webp"
+                        alt="Profile Picture"
+                        width={300}
+                        height={245}
+                        className=""
+                        priority
+                      />
+                    </div>
+                    <p className={`${dekko.className} mb-6`}>
+                      Berita Teh Sarifah berisikan berbagai artikel <br></br>
+                      mengenai kegiatan maupun berita nasional. <br></br>
+                      Anda mau masuk Berita?
+                    </p>
+                    <div className="flex justify-center">
+                      <button
+                        className={`${jersey15.className} items-center rounded bg-teal-500 px-12 py-2 text-xl text-white outline outline-2 outline-black hover:bg-teal-600`}
+                        onClick={() => setshowArticle(false)}
+                      >
+                        Masuk Berita
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              <div
+                className="absolute left-[55%] top-[50%]"
+                onClick={() => setshowArticle(true)}
+              >
+                <Image
+                  src="/images/berita.webp"
+                  alt="Berita"
+                  width={280}
+                  height={210}
+                  className="hover-outline cursor-pointer"
+                  priority
+                />
+              </div>
+
+              <div
+                className="absolute left-[30%] top-[2%]"
+                onClick={() => setshowDPR(true)}
+              >
+                <Image
+                  src="/images/dpr.webp"
+                  alt="Rumah"
+                  width={290}
+                  height={192}
+                  className="hover-outline cursor-pointer"
+                  priority
+                />
+              </div>
+
+              <div
+                className="absolute left-[35%] top-[33%]"
+                onClick={() => setshowGallery(true)}
+              >
+                <Image
+                  src="/images/galeri.webp"
+                  alt="Gedung Galeri"
+                  width={280}
+                  height={192}
+                  className="hover-outline cursor-pointer"
+                  priority
+                />
+              </div>
+
+              <div
+                className="absolute left-[46%] top-[27%]"
+                onClick={() => setshowSAJ(true)}
+              >
+                <Image
+                  src="/images/suara-saj.webp"
+                  alt="Suara SAJ"
+                  width={230}
+                  height={192}
+                  className="hover-outline cursor-pointer"
+                  priority
+                />
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>
