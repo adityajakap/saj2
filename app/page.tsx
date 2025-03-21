@@ -232,6 +232,13 @@ const Page = () => {
                       outlineOffset: "-3px",
                     }}
                   >
+                    {/* Close button */}
+                    <button
+                      className="absolute right-4 top-4 text-2xl text-black hover:text-red-500"
+                      onClick={() => setshowDPR(false)}
+                    >
+                      ✖
+                    </button>
                     {/* Applying the font here */}
                     <h2
                       className={`${jersey15.className} mb-4 text-center text-5xl font-bold text-white`}
@@ -258,12 +265,12 @@ const Page = () => {
                       RI?
                     </p>
                     <div className="flex justify-center">
-                      <button
+                      <a
+                        href="/dpr"
                         className={`${jersey15.className} items-center rounded bg-teal-500 px-12 py-2 text-xl text-white outline outline-2 outline-black hover:bg-teal-600`}
-                        onClick={() => setshowDPR(false)}
                       >
                         Masuk DPR RI
-                      </button>
+                      </a>
                     </div>
                   </div>
                 </div>
