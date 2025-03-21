@@ -177,20 +177,6 @@ const Page = () => {
           ) : (
             <>
               {/* Desktop Layout */}
-              <div
-                className="absolute left-[54%] top-[16%] cursor-pointer"
-                onClick={() => setshowProfil(true)}
-              >
-                <Image
-                  src="/images/rumah.webp"
-                  alt="Profil"
-                  width={280}
-                  height={210}
-                  className="hover-outline"
-                  priority
-                />
-              </div>
-
               {showProfil && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
                   <div
