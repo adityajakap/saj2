@@ -71,13 +71,13 @@ const Page = () => {
             <>
               {/* Mobile Layout */}
               <div
-                className="absolute left-[54%] top-[16%] cursor-pointer"
+                className="absolute left-[10%] top-[70%] cursor-pointer"
                 onClick={() => setshowProfil(true)}
               >
                 <Image
                   src="/images/rumah.webp"
-                  alt="Gedung DPR"
-                  width={280}
+                  alt="Profil"
+                  width={200}
                   height={210}
                   className="hover-outline"
                   priority
@@ -141,22 +141,22 @@ const Page = () => {
                 />
               </div>
 
-              <div className="absolute left-[30%] top-[2%]">
+              <div className="absolute left-[2%] top-[1%]">
                 <Image
                   src="/images/dpr.webp"
                   alt="Rumah"
-                  width={290}
+                  width={185}
                   height={192}
                   className="hover-outline cursor-pointer"
                   priority
                 />
               </div>
 
-              <div className="absolute left-[35%] top-[33%]">
+              <div className="absolute left-[10%] top-[37%]">
                 <Image
                   src="/images/galeri.webp"
                   alt="Gedung Galeri"
-                  width={280}
+                  width={185}
                   height={192}
                   className="hover-outline cursor-pointer"
                   priority
@@ -167,7 +167,7 @@ const Page = () => {
                 <Image
                   src="/images/suara-saj.webp"
                   alt="Suara SAJ"
-                  width={230}
+                  width={185}
                   height={192}
                   className="hover-outline cursor-pointer"
                   priority
