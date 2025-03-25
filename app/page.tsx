@@ -132,7 +132,7 @@ const Page = () => {
 
               <div className="absolute left-[55%] top-[59%]">
                 <Image
-                  src="/images/rumah.webp"
+                  src="/images/berita.webp"
                   alt="Gedung DPR"
                   width={280}
                   height={210}
