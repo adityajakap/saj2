@@ -71,7 +71,7 @@ const Page = () => {
             <>
               {/* Mobile Layout */}
               <div
-                className="absolute left-[48%] top-[37%] cursor-pointer"
+                className="absolute left-[48%] top-[35%] cursor-pointer"
                 onClick={() => setshowProfil(true)}
               >
                 <Image
