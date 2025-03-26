@@ -59,7 +59,7 @@ const Page = () => {
           {/* Background Image as part of the fixed container */}
           <div className="absolute left-0 top-0 size-full">
             <Image
-              src="/images/profil-bg.png"
+              src="/images/profil-bg1.png"
               alt="Background Image"
               layout="fill"
               objectFit="cover"
@@ -71,13 +71,27 @@ const Page = () => {
             <>
               {/* Mobile Layout */}
               <div
-                className="absolute left-[54%] top-[16%] cursor-pointer"
+                className="absolute left-[48%] top-[37%] cursor-pointer"
                 onClick={() => setshowProfil(true)}
               >
                 <Image
-                  src="/images/rumah.webp"
+                  src="/images/biografi.gif"
                   alt="Gedung DPR"
-                  width={280}
+                  width={260}
+                  height={210}
+                  className="hover-outline"
+                  priority
+                />
+              </div>
+
+              <div
+                className="absolute left-[6%] top-[53%] cursor-pointer"
+                onClick={() => setshowProfil(true)}
+              >
+                <Image
+                  src="/images/laptop.png"
+                  alt="Gedung DPR"
+                  width={120}
                   height={210}
                   className="hover-outline"
                   priority
@@ -177,19 +191,33 @@ const Page = () => {
           ) : (
             <>
               {/* Desktop Layout */}
-              {/* <div
-                className="absolute left-[55.3%] top-[35.5%] cursor-pointer"
+              <div
+                className="absolute left-[47.3%] top-[28.5%] cursor-pointer"
                 onClick={() => setshowProfil(true)}
               >
                 <Image
-                  src="/images/bakn.png"
+                  src="/images/biografi.gif"
                   alt="Profil"
-                  width={220}
+                  width={350}
                   height={210}
                   className="hover-outline"
                   priority
                 />
-              </div> */}
+              </div>
+
+              <div
+                className="absolute left-[37.3%] top-[50.5%] cursor-pointer"
+                onClick={() => setshowProfil(true)}
+              >
+                <Image
+                  src="/images/laptop.png"
+                  alt="Profil"
+                  width={200}
+                  height={210}
+                  className="hover-outline"
+                  priority
+                />
+              </div>
             </>
           )}
         </div>
