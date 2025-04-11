@@ -15,7 +15,8 @@
     "flowbite-react": "^0.8.0",
     "next": "^14.2.23",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "tailwind-scrollbar-hide": "^2.0.0"
   },
   "devDependencies": {
     "@types/node": "^20",
