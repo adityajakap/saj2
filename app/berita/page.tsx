@@ -59,7 +59,7 @@ const Page = () => {
           {/* Background Image as part of the fixed container */}
           <div className="absolute left-0 top-0 size-full">
             <Image
-              src="/images/berita-bg.png"
+              src="/images/news/saj-news.gif"
               alt="Background Image"
               layout="fill"
               objectFit="cover"
@@ -83,113 +83,51 @@ const Page = () => {
                   priority
                 />
               </div>
-
-              {showProfil && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-                  <div
-                    className="rounded-lg bg-white p-6 shadow-lg"
-                    style={{
-                      outline: "5px solid black",
-                      outlineOffset: "-3px",
-                    }}
-                  >
-                    {/* Applying the font here */}
-                    <h2
-                      className={`${jersey15.className} mb-4 text-center text-5xl font-bold text-white`}
-                      style={{
-                        textShadow:
-                          "3px 3px 0 black, -3px 3px 0 black, 3px -3px 0 black, -3px -3px 0 black",
-                      }}
-                    >
-                      Profil
-                    </h2>
-                    {/* <div className="flex justify-center">
-                      <Image
-                        src="/images/profil.webp"
-                        alt="Profile Picture"
-                        width={300}
-                        height={245}
-                        className=""
-                        priority
-                      />
-                    </div> */}
-                    <p className={`${dekko.className} mb-6`}>
-                      Profil Teh Sarifah beserta kisah<br></br> perjalanannya
-                      dari Bacaleg menjadi<br></br> Anggota DPR. Anda mau masuk
-                      ke Profil?
-                    </p>
-                    <div className="flex justify-center">
-                      <button
-                        className={`${jersey15.className} items-center rounded bg-teal-500 px-12 py-2 text-xl text-white outline outline-2 outline-black hover:bg-teal-600`}
-                        onClick={() => setshowProfil(false)}
-                      >
-                        Masuk Profil
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* <div className="absolute left-[55%] top-[59%]">
-                <Image
-                  src="/images/rumah.webp"
-                  alt="Gedung DPR"
-                  width={280}
-                  height={210}
-                  className="hover-outline cursor-pointer"
-                  priority
-                />
-              </div>
-
-              <div className="absolute left-[30%] top-[2%]">
-                <Image
-                  src="/images/dpr.webp"
-                  alt="Rumah"
-                  width={290}
-                  height={192}
-                  className="hover-outline cursor-pointer"
-                  priority
-                />
-              </div>
-
-              <div className="absolute left-[35%] top-[33%]">
-                <Image
-                  src="/images/galeri.webp"
-                  alt="Gedung Galeri"
-                  width={280}
-                  height={192}
-                  className="hover-outline cursor-pointer"
-                  priority
-                />
-              </div> */}
-              {/* 
-              <div className="absolute left-[46%] top-[27%]">
-                <Image
-                  src="/images/suara-saj.webp"
-                  alt="Suara SAJ"
-                  width={230}
-                  height={192}
-                  className="hover-outline cursor-pointer"
-                  priority
-                />
-              </div> */}
             </>
           ) : (
             <>
               {/* Desktop Layout */}
-              {/* <div
-                className="absolute left-[55.3%] top-[35.5%] cursor-pointer"
+              <div
+                className="absolute left-[40.3%] top-[27.5%] cursor-pointer"
                 onClick={() => setshowProfil(true)}
               >
                 <Image
-                  src="/images/bakn.png"
+                  src="/images/news/semua-berita.gif"
                   alt="Profil"
-                  width={220}
+                  width={400}
                   height={210}
                   className="hover-outline"
                   priority
                 />
-              </div> */}
+              </div>
+
+              <div
+                className="absolute left-[60.3%] top-[23.5%] cursor-pointer"
+                onClick={() => setshowProfil(true)}
+              >
+                <Image
+                  src="/images/news/teh-sarifah.png"
+                  alt="Profil"
+                  width={550}
+                  height={210}
+                  className="hover-outline"
+                  priority
+                />
+              </div>
+
+              <div
+                className="absolute left-[10.3%] top-[60.5%] cursor-pointer"
+                onClick={() => setshowProfil(true)}
+              >
+                <Image
+                  src="/images/news/saj-1.png"
+                  alt="Profil"
+                  width={400}
+                  height={210}
+                  className="hover-outline"
+                  priority
+                />
+              </div>
             </>
           )}
         </div>

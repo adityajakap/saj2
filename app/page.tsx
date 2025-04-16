@@ -93,6 +93,13 @@ const Page = () => {
                       outlineOffset: "-3px",
                     }}
                   >
+                    {/* Close Button */}
+                    <button
+                      className="absolute right-4 top-4 z-10 rounded-full bg-gray-400 px-3 py-1 text-sm text-black transition hover:bg-gray-600"
+                      onClick={() => setshowProfil(false)}
+                    >
+                      ✕
+                    </button>
                     {/* Applying the font here */}
                     <h2
                       className={`${jersey15.className} mb-4 text-center text-5xl font-bold text-white`}
@@ -119,12 +126,12 @@ const Page = () => {
                       ke Profil?
                     </p>
                     <div className="flex justify-center">
-                      <button
+                      <a
+                        href="/profil"
                         className={`${jersey15.className} items-center rounded bg-teal-500 px-12 py-2 text-xl text-white outline outline-2 outline-black hover:bg-teal-600`}
-                        onClick={() => setshowProfil(false)}
                       >
                         Masuk Profil
-                      </button>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -180,12 +187,20 @@ const Page = () => {
               {showProfil && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
                   <div
-                    className="rounded-lg bg-white p-6 shadow-lg"
+                    className="relative rounded-lg bg-white p-6 shadow-lg"
                     style={{
                       outline: "5px solid black",
                       outlineOffset: "-3px",
                     }}
                   >
+                    {/* Close Button */}
+                    <button
+                      className="absolute right-4 top-4 z-10 rounded-full bg-gray-400 px-3 py-1 text-sm text-black transition hover:bg-gray-600"
+                      onClick={() => setshowProfil(false)}
+                    >
+                      ✕
+                    </button>
+
                     {/* Applying the font here */}
                     <h2
                       className={`${jersey15.className} mb-4 text-center text-5xl font-bold text-white`}
@@ -212,12 +227,12 @@ const Page = () => {
                       ke Profil?
                     </p>
                     <div className="flex justify-center">
-                      <button
+                      <a
+                        href="/profil"
                         className={`${jersey15.className} items-center rounded bg-teal-500 px-12 py-2 text-xl text-white outline outline-2 outline-black hover:bg-teal-600`}
-                        onClick={() => setshowProfil(false)}
                       >
                         Masuk Profil
-                      </button>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -232,12 +247,12 @@ const Page = () => {
                       outlineOffset: "-3px",
                     }}
                   >
-                    {/* Close button */}
+                    {/* Close Button */}
                     <button
-                      className="absolute right-4 top-4 text-2xl text-black hover:text-red-500"
+                      className="absolute right-4 top-4 z-10 rounded-full bg-gray-400 px-3 py-1 text-sm text-black transition hover:bg-gray-600"
                       onClick={() => setshowDPR(false)}
                     >
-                      ✖
+                      ✕
                     </button>
                     {/* Applying the font here */}
                     <h2
@@ -465,6 +480,20 @@ const Page = () => {
                   width={230}
                   height={192}
                   className="hover-outline cursor-pointer"
+                  priority
+                />
+              </div>
+
+              <div
+                className="absolute left-[43%] top-[69%] cursor-pointer"
+                onClick={() => setshowProfil(true)}
+              >
+                <Image
+                  src="/images/rumah.webp"
+                  alt="Profil"
+                  width={300}
+                  height={210}
+                  className="hover-outline"
                   priority
                 />
               </div>
