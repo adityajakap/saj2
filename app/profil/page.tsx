@@ -189,50 +189,6 @@ const Page = () => {
                   priority
                 />
               </div>
-
-              {/* <div className="absolute left-[55%] top-[59%]">
-                <Image
-                  src="/images/rumah.webp"
-                  alt="Gedung DPR"
-                  width={280}
-                  height={210}
-                  className="hover-outline cursor-pointer"
-                  priority
-                />
-              </div>
-
-              <div className="absolute left-[30%] top-[2%]">
-                <Image
-                  src="/images/dpr.webp"
-                  alt="Rumah"
-                  width={290}
-                  height={192}
-                  className="hover-outline cursor-pointer"
-                  priority
-                />
-              </div>
-
-              <div className="absolute left-[35%] top-[33%]">
-                <Image
-                  src="/images/galeri.webp"
-                  alt="Gedung Galeri"
-                  width={280}
-                  height={192}
-                  className="hover-outline cursor-pointer"
-                  priority
-                />
-              </div> */}
-              {/* 
-              <div className="absolute left-[46%] top-[27%]">
-                <Image
-                  src="/images/suara-saj.webp"
-                  alt="Suara SAJ"
-                  width={230}
-                  height={192}
-                  className="hover-outline cursor-pointer"
-                  priority
-                />
-              </div> */}
             </>
           ) : (
             <>
