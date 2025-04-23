@@ -5,6 +5,7 @@ import Image from "next/image";
 import "../globals.css";
 import { Jersey_15 } from "next/font/google";
 import { Dekko } from "next/font/google";
+import Button from "../components/Button"; 
 
 const jersey15 = Jersey_15({
   subsets: ["latin"],
@@ -19,27 +20,34 @@ const dekko = Dekko({
 const Page = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [showProfil, setshowProfil] = useState(false);
-  const [showDPR, setshowDPR] = useState(false);
-  const [showSAJ, setshowSAJ] = useState(false);
-  const [showGallery, setshowGallery] = useState(false);
-  const [showArticle, setshowArticle] = useState(false);
-  const [showKunjungan, setshowKunjungan] = useState(false);
+  const [loading, setLoading] = useState(true);
 
+  // 👉 Simulasi loading
   useEffect(() => {
-    // Check if the device is mobile
+    const timer = setTimeout(() => setLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // 👉 Deteksi perangkat mobile
+  useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
 
-    // Initial check
     checkMobile();
-
-    // Add event listener for window resize
     window.addEventListener("resize", checkMobile);
-
-    // Clean up event listener
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
+
+  // 👉 Loader muncul dulu
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <img src="/images/loader.gif" alt="Memuat..." className="w-48" />
+      </div>
+    );
+  }
+
 
   return (
     <div className="flex h-screen w-full items-center justify-center">
@@ -67,17 +75,19 @@ const Page = () => {
             />
           </div>
 
+          <Button />
+
           {isMobile ? (
             <>
               {/* Mobile Layout */}
               <div
-                className="absolute left-[54%] top-[16%] cursor-pointer"
+                className="absolute left-[20%] top-[36%] cursor-pointer"
                 onClick={() => setshowProfil(true)}
               >
                 <Image
-                  src="/images/rumah.webp"
+                  src="/images/news/semua-berita.gif"
                   alt="Gedung DPR"
-                  width={280}
+                  width={420}
                   height={210}
                   className="hover-outline"
                   priority
