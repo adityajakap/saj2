@@ -26,14 +26,20 @@ const Page = () => {
   const [showKemhan, setshowKemhan] = useState(false);
   const [activeTab, setActiveTab] = useState("transformasi");
   const [loading, setLoading] = useState(true);
+  const [hasMounted, setHasMounted] = useState(false);
 
-  // 👉 Simulasi loading
+  // Set hasMounted true setelah komponen dimount
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  // Simulasi loading
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 2000);
     return () => clearTimeout(timer);
   }, []);
 
-  // 👉 Deteksi perangkat mobile
+  // Deteksi perangkat mobile
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
@@ -44,7 +50,10 @@ const Page = () => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // 👉 Loader muncul dulu
+  // Cegah mismatch saat hydration
+  if (!hasMounted) return null;
+
+  // Loader
   if (loading) {
     return (
       <div className="flex justify-center items-center min-h-screen">
@@ -52,7 +61,6 @@ const Page = () => {
       </div>
     );
   }
-
   return (
     <div className="flex h-screen w-full items-center justify-center">
       {/* Main container with viewport dimensions */}
