@@ -23,7 +23,7 @@ const Header: React.FC<HeaderProps> = ({ onHomeClick, onMenuClick }) => {
             />
             {/* Hamburger Menu */}
             <Image
-                src="/images/menu-button.png"
+                src="/images/candy-box.png"
                 alt="Menu Button"
                 width={60}
                 height={60}
