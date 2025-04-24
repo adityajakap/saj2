@@ -7,7 +7,6 @@ import { Jersey_15 } from "next/font/google";
 import { Dekko } from "next/font/google";
 import Button from "../components/Button";
 
-
 const jersey15 = Jersey_15({
   subsets: ["latin"],
   weight: ["400"],

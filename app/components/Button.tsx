@@ -11,16 +11,15 @@ const Header: React.FC<HeaderProps> = ({ onHomeClick, onMenuClick }) => {
     return (
         <div className="absolute top-4 left-0 right-0 z-50 flex justify-between items-center px-4 sm:px-6 lg:px-8">
             {/* Home Button */}
-            <Image
-                src="/images/home-button.png"
-                alt="Home Button"
-                width={60}
-                height={60}
-                className="cursor-pointer hover:scale-110 transition-transform"
-                onClick={
-                    onHomeClick ? onHomeClick : () => console.log("Home clicked")
-                }
-            />
+            <a href="/">
+                <Image
+                    src="/images/home-button.png"
+                    alt="Home Button"
+                    width={60}
+                    height={60}
+                    className="cursor-pointer hover:scale-110 transition-transform"
+                />
+            </a>
             {/* Hamburger Menu */}
             <Image
                 src="/images/candy-box.png"
