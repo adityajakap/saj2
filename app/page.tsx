@@ -7,7 +7,6 @@ import { Jersey_15 } from "next/font/google";
 import { Dekko } from "next/font/google";
 import Button from "./components/Button";
 
-
 const jersey15 = Jersey_15({
   subsets: ["latin"],
   weight: ["400"],
@@ -57,7 +56,7 @@ const Page = () => {
   // Loader
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-screen">
+      <div className="flex min-h-screen items-center justify-center">
         <img src="/images/loader.gif" alt="Memuat..." className="w-48" />
       </div>
     );
@@ -78,8 +77,7 @@ const Page = () => {
             top: "0",
           }}
         >
-        <Button />
-
+          <Button />
 
           {/* Background Image as part of the fixed container */}
           <div className="absolute left-0 top-0 size-full">
@@ -99,7 +97,7 @@ const Page = () => {
               {showDPR && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
                   <div
-                    className="rounded-lg bg-white p-6 shadow-lg"
+                    className="relative rounded-lg bg-white p-6 shadow-lg"
                     style={{
                       outline: "5px solid black",
                       outlineOffset: "-3px",
@@ -152,12 +150,19 @@ const Page = () => {
               {showSAJ && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
                   <div
-                    className="rounded-lg bg-white p-6 shadow-lg"
+                    className="relative rounded-lg bg-white p-6 shadow-lg"
                     style={{
                       outline: "5px solid black",
                       outlineOffset: "-3px",
                     }}
                   >
+                    {/* Close Button */}
+                    <button
+                      className="absolute right-4 top-4 z-10 rounded-full bg-gray-400 px-3 py-1 text-sm text-black transition hover:bg-gray-600"
+                      onClick={() => setshowSAJ(false)}
+                    >
+                      ✕
+                    </button>
                     {/* Applying the font here */}
                     <h2
                       className={`${jersey15.className} mb-4 text-center text-5xl font-bold text-white`}
@@ -184,7 +189,7 @@ const Page = () => {
                       Anda mau masuk Suara SAJ?
                     </p>
                     <div className="flex justify-center">
-                    <a
+                      <a
                         href="/suara-saj"
                         className={`${jersey15.className} items-center rounded bg-teal-500 px-12 py-2 text-xl text-white outline outline-2 outline-black hover:bg-teal-600`}
                       >
@@ -197,12 +202,19 @@ const Page = () => {
               {showGallery && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
                   <div
-                    className="rounded-lg bg-white p-6 shadow-lg"
+                    className="relative rounded-lg bg-white p-6 shadow-lg"
                     style={{
                       outline: "5px solid black",
                       outlineOffset: "-3px",
                     }}
                   >
+                    {/* Close Button */}
+                    <button
+                      className="absolute right-4 top-4 z-10 rounded-full bg-gray-400 px-3 py-1 text-sm text-black transition hover:bg-gray-600"
+                      onClick={() => setshowGallery(false)}
+                    >
+                      ✕
+                    </button>
                     {/* Applying the font here */}
                     <h2
                       className={`${jersey15.className} mb-4 text-center text-5xl font-bold text-white`}
@@ -229,12 +241,12 @@ const Page = () => {
                       Anda mau masuk Galeri?
                     </p>
                     <div className="flex justify-center">
-                      <button
+                      <a
+                        href="/galeri"
                         className={`${jersey15.className} items-center rounded bg-teal-500 px-12 py-2 text-xl text-white outline outline-2 outline-black hover:bg-teal-600`}
-                        onClick={() => setshowGallery(false)}
                       >
                         Masuk Galeri
-                      </button>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -243,12 +255,19 @@ const Page = () => {
               {showArticle && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
                   <div
-                    className="rounded-lg bg-white p-6 shadow-lg"
+                    className="relative rounded-lg bg-white p-6 shadow-lg"
                     style={{
                       outline: "5px solid black",
                       outlineOffset: "-3px",
                     }}
                   >
+                    {/* Close Button */}
+                    <button
+                      className="absolute right-4 top-4 z-10 rounded-full bg-gray-400 px-3 py-1 text-sm text-black transition hover:bg-gray-600"
+                      onClick={() => setshowArticle(false)}
+                    >
+                      ✕
+                    </button>
                     {/* Applying the font here */}
                     <h2
                       className={`${jersey15.className} mb-4 text-center text-5xl font-bold text-white`}
@@ -275,7 +294,7 @@ const Page = () => {
                       Anda mau masuk Berita?
                     </p>
                     <div className="flex justify-center">
-                    <a
+                      <a
                         href="/berita"
                         className={`${jersey15.className} items-center rounded bg-teal-500 px-12 py-2 text-xl text-white outline outline-2 outline-black hover:bg-teal-600`}
                       >
@@ -303,7 +322,7 @@ const Page = () => {
               {showProfil && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
                   <div
-                    className="rounded-lg bg-white p-6 shadow-lg"
+                    className="relative rounded-lg bg-white p-6 shadow-lg"
                     style={{
                       outline: "5px solid black",
                       outlineOffset: "-3px",
@@ -353,8 +372,10 @@ const Page = () => {
                 </div>
               )}
 
-              <div className="absolute left-[55%] top-[59%]"
-               onClick={() => setshowArticle(true)}>
+              <div
+                className="absolute left-[55%] top-[59%]"
+                onClick={() => setshowArticle(true)}
+              >
                 <Image
                   src="/images/berita.webp"
                   alt="Gedung DPR"
@@ -365,8 +386,10 @@ const Page = () => {
                 />
               </div>
 
-              <div className="absolute left-[2%] top-[1%]"
-              onClick={() => setshowDPR(true)}>
+              <div
+                className="absolute left-[2%] top-[1%]"
+                onClick={() => setshowDPR(true)}
+              >
                 <Image
                   src="/images/dpr.webp"
                   alt="Rumah"
@@ -377,8 +400,10 @@ const Page = () => {
                 />
               </div>
 
-              <div className="absolute left-[10%] top-[37%]"
-                onClick={() => setshowGallery(true)}>
+              <div
+                className="absolute left-[10%] top-[37%]"
+                onClick={() => setshowGallery(true)}
+              >
                 <Image
                   src="/images/galeri.webp"
                   alt="Gedung Galeri"
@@ -389,8 +414,10 @@ const Page = () => {
                 />
               </div>
 
-              <div className="absolute left-[46%] top-[27%]"
-                onClick={() => setshowSAJ(true)}>
+              <div
+                className="absolute left-[46%] top-[27%]"
+                onClick={() => setshowSAJ(true)}
+              >
                 <Image
                   src="/images/suara-saj.webp"
                   alt="Suara SAJ"
@@ -461,7 +488,7 @@ const Page = () => {
               {showDPR && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
                   <div
-                    className="rounded-lg bg-white p-6 shadow-lg"
+                    className="relative rounded-lg bg-white p-6 shadow-lg"
                     style={{
                       outline: "5px solid black",
                       outlineOffset: "-3px",
@@ -514,12 +541,19 @@ const Page = () => {
               {showSAJ && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
                   <div
-                    className="rounded-lg bg-white p-6 shadow-lg"
+                    className="relative rounded-lg bg-white p-6 shadow-lg"
                     style={{
                       outline: "5px solid black",
                       outlineOffset: "-3px",
                     }}
                   >
+                    {/* Close Button */}
+                    <button
+                      className="absolute right-4 top-4 z-10 rounded-full bg-gray-400 px-3 py-1 text-sm text-black transition hover:bg-gray-600"
+                      onClick={() => setshowSAJ(false)}
+                    >
+                      ✕
+                    </button>
                     {/* Applying the font here */}
                     <h2
                       className={`${jersey15.className} mb-4 text-center text-5xl font-bold text-white`}
@@ -546,12 +580,12 @@ const Page = () => {
                       Anda mau masuk Suara SAJ?
                     </p>
                     <div className="flex justify-center">
-                      <button
+                      <a
+                        href="/suara-saj"
                         className={`${jersey15.className} items-center rounded bg-teal-500 px-12 py-2 text-xl text-white outline outline-2 outline-black hover:bg-teal-600`}
-                        onClick={() => setshowSAJ(false)}
                       >
-                        Masuk Suara SAJ
-                      </button>
+                        Masuk SUARA SAJ
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -559,12 +593,19 @@ const Page = () => {
               {showGallery && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
                   <div
-                    className="rounded-lg bg-white p-6 shadow-lg"
+                    className="relative rounded-lg bg-white p-6 shadow-lg"
                     style={{
                       outline: "5px solid black",
                       outlineOffset: "-3px",
                     }}
                   >
+                    {/* Close Button */}
+                    <button
+                      className="absolute right-4 top-4 z-10 rounded-full bg-gray-400 px-3 py-1 text-sm text-black transition hover:bg-gray-600"
+                      onClick={() => setshowGallery(false)}
+                    >
+                      ✕
+                    </button>
                     {/* Applying the font here */}
                     <h2
                       className={`${jersey15.className} mb-4 text-center text-5xl font-bold text-white`}
@@ -591,12 +632,12 @@ const Page = () => {
                       Anda mau masuk Galeri?
                     </p>
                     <div className="flex justify-center">
-                      <button
+                      <a
+                        href="/galeri"
                         className={`${jersey15.className} items-center rounded bg-teal-500 px-12 py-2 text-xl text-white outline outline-2 outline-black hover:bg-teal-600`}
-                        onClick={() => setshowGallery(false)}
                       >
-                        Masuk Galeri
-                      </button>
+                        Masuk SUARA SAJ
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -605,12 +646,19 @@ const Page = () => {
               {showArticle && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
                   <div
-                    className="rounded-lg bg-white p-6 shadow-lg"
+                    className="relative rounded-lg bg-white p-6 shadow-lg"
                     style={{
                       outline: "5px solid black",
                       outlineOffset: "-3px",
                     }}
                   >
+                    {/* Close Button */}
+                    <button
+                      className="absolute right-4 top-4 z-10 rounded-full bg-gray-400 px-3 py-1 text-sm text-black transition hover:bg-gray-600"
+                      onClick={() => setshowArticle(false)}
+                    >
+                      ✕
+                    </button>
                     {/* Applying the font here */}
                     <h2
                       className={`${jersey15.className} mb-4 text-center text-5xl font-bold text-white`}
@@ -621,6 +669,7 @@ const Page = () => {
                     >
                       Berita
                     </h2>
+
                     <div className="flex justify-center">
                       <Image
                         src="/images/berita-1.webp"
@@ -637,12 +686,12 @@ const Page = () => {
                       Anda mau masuk Berita?
                     </p>
                     <div className="flex justify-center">
-                      <button
+                      <a
+                        href="/berita"
                         className={`${jersey15.className} items-center rounded bg-teal-500 px-12 py-2 text-xl text-white outline outline-2 outline-black hover:bg-teal-600`}
-                        onClick={() => setshowArticle(false)}
                       >
                         Masuk Berita
-                      </button>
+                      </a>
                     </div>
                   </div>
                 </div>

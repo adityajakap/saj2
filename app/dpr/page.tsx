@@ -7,7 +7,6 @@ import { Jersey_15 } from "next/font/google";
 import { Dekko } from "next/font/google";
 import Button from "../components/Button";
 
-
 const jersey15 = Jersey_15({
   subsets: ["latin"],
   weight: ["400"],
@@ -56,7 +55,7 @@ const Page = () => {
   // Loader
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-screen">
+      <div className="flex min-h-screen items-center justify-center">
         <img src="/images/loader.gif" alt="Memuat..." className="w-48" />
       </div>
     );
@@ -93,7 +92,7 @@ const Page = () => {
             <>
               {/* Mobile Layout */}
               {showBakn && (
-                  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4">
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4">
                   <div className="relative max-h-[90vh] w-full max-w-6xl overflow-y-auto rounded-2xl bg-white px-6 py-10 shadow-2xl ring-4 ring-black scrollbar-hide md:px-12 md:py-14">
                     {/* Close Button */}
                     <button
@@ -119,7 +118,7 @@ const Page = () => {
                       <div className="space-y-8">
                         <div className="relative h-80 w-full overflow-hidden rounded-xl shadow-md">
                           <Image
-                            src="/images/bakn-main.jpg"
+                            src="/images/dpr/bakn-1.jpg"
                             alt="BAKN DPR"
                             fill
                             className="object-cover"
@@ -187,7 +186,7 @@ const Page = () => {
                         </div>
                         <div className="mt-8">
                           <Image
-                            src="/images/bakn-kolaborasi.jpg"
+                            src="/images/dpr/bakn-2.jpg"
                             alt="Kolaborasi BAKN & BPK"
                             width={600}
                             height={400}
@@ -268,7 +267,7 @@ const Page = () => {
                             informasi.
                           </p>
                           <Image
-                            src="/images/komdigi-main.jpg"
+                            src="/images/dpr/komdigi-1.jpg"
                             alt="Transformasi Digital"
                             width={600}
                             height={400}
@@ -361,7 +360,7 @@ const Page = () => {
                             akurat di era digital ini.
                           </p>
                           <Image
-                            src="/images/komdigi-kerja.jpg"
+                            src="/images/dpr/komdigi-2.jpg"
                             alt="Kerja Komdigi"
                             width={600}
                             height={400}
@@ -375,7 +374,7 @@ const Page = () => {
               )}
 
               {showKemhan && (
-         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4">
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4">
                   <div className="relative max-h-[90vh] w-full max-w-6xl overflow-y-auto rounded-2xl bg-white px-6 py-10 shadow-2xl ring-4 ring-black scrollbar-hide md:px-12 md:py-14">
                     {/* Close Button */}
                     <button
@@ -401,7 +400,7 @@ const Page = () => {
                       <div className="space-y-8">
                         <div className="relative h-80 w-full overflow-hidden rounded-xl shadow-md">
                           <Image
-                            src="/images/pertahanan-main.jpg"
+                            src="/images/dpr/kemhan-2.jpg"
                             alt="Pertahanan Negara"
                             fill
                             className="object-cover"
@@ -457,7 +456,7 @@ const Page = () => {
 
                         <div className="mt-8">
                           <Image
-                            src="/images/pertahanan-kerja.jpg"
+                            src="/images/dpr/kemhan-1.jpg"
                             alt="Operasional TNI"
                             width={600}
                             height={400}
@@ -472,14 +471,15 @@ const Page = () => {
 
               {showLuar && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4">
-                  <div className="relative max-h-[90vh] w-full max-w-6xl overflow-y-auto rounded-2xl bg-white px-6 py-10 shadow-2xl ring-4 ring-black scrollbar-hide md:px-12 md:py-14">                    {/* Close Button */}
+                  <div className="relative max-h-[90vh] w-full max-w-6xl overflow-y-auto rounded-2xl bg-white px-6 py-10 shadow-2xl ring-4 ring-black scrollbar-hide md:px-12 md:py-14">
+                    {" "}
+                    {/* Close Button */}
                     <button
                       className="absolute right-4 top-4 rounded-full bg-gray-200 px-3 py-1 text-sm text-black hover:bg-gray-400"
                       onClick={() => setshowLuar(false)}
                     >
                       ✕
                     </button>
-
                     {/* Title and Description */}
                     <div className="mb-8 text-center">
                       <h1 className="mb-2 text-4xl font-bold text-blue-700">
@@ -490,7 +490,6 @@ const Page = () => {
                         Indonesia
                       </p>
                     </div>
-
                     {/* Layout with Three Columns */}
                     <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-12">
                       {/* Left Column: Text Content */}
@@ -523,7 +522,7 @@ const Page = () => {
                       <div className="space-y-8">
                         <div className="relative h-56 w-full overflow-hidden rounded-xl shadow-md">
                           <Image
-                            src="/images/kemenlu-main.jpg"
+                            src="/images/dpr/menlu-1.jpg"
                             alt="Kemenlu Main"
                             fill
                             className="object-cover"
@@ -588,12 +587,11 @@ const Page = () => {
                         </p>
                       </div>
                     </div>
-
                     {/* Images Section */}
                     <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
                       <div className="relative h-56 w-full overflow-hidden rounded-xl shadow-lg">
                         <Image
-                          src="/images/kemenlu-diplomasi.jpg"
+                          src="/images/dpr/menlu-2.jpg"
                           alt="Diplomasi Kemenlu"
                           fill
                           className="object-cover"
@@ -601,7 +599,7 @@ const Page = () => {
                       </div>
                       <div className="relative h-56 w-full overflow-hidden rounded-xl shadow-lg">
                         <Image
-                          src="/images/kemenlu-pekerja.jpg"
+                          src="/images/dpr/menlu-3.jpg"
                           alt="Pekerja Migran"
                           fill
                           className="object-cover"
@@ -609,7 +607,7 @@ const Page = () => {
                       </div>
                       <div className="relative h-56 w-full overflow-hidden rounded-xl shadow-lg">
                         <Image
-                          src="/images/kemenlu-pertemuan.jpg"
+                          src="/images/dpr/menlu-4.jpg"
                           alt="Pertemuan Diplomatik"
                           fill
                           className="object-cover"
@@ -621,13 +619,13 @@ const Page = () => {
               )}
 
               <div
-                className="absolute left-[73.6%] top-[45%] cursor-pointer"
+                className="absolute left-[68.4%] top-[42%] cursor-pointer"
                 onClick={() => setshowBakn(true)}
               >
                 <Image
-                  src="/images/dpr/bakn.gif"
+                  src="/images/dpr/bakn-mobile.gif"
                   alt="Profil"
-                  width={160}
+                  width={150}
                   height={210}
                   className="hover-outline"
                   priority
@@ -635,7 +633,7 @@ const Page = () => {
               </div>
 
               <div
-                className="absolute left-[10.3%] top-[60%] cursor-pointer"
+                className="absolute left-[10.3%] top-[58%] cursor-pointer"
                 onClick={() => setshowKomdigi(true)}
               >
                 <Image
@@ -649,13 +647,13 @@ const Page = () => {
               </div>
 
               <div
-                className="absolute left-[45.3%] top-[65%] cursor-pointer"
+                className="absolute left-[45.3%] top-[63%] cursor-pointer"
                 onClick={() => setshowKemhan(true)}
               >
                 <Image
                   src="/images/dpr/kemhan.png"
                   alt="Profil"
-                  width={120}
+                  width={100}
                   height={210}
                   className="hover-outline"
                   priority
@@ -706,7 +704,7 @@ const Page = () => {
                       <div className="space-y-8">
                         <div className="relative h-80 w-full overflow-hidden rounded-xl shadow-md">
                           <Image
-                            src="/images/bakn-main.jpg"
+                            src="/images/dpr/bakn-1.jpg"
                             alt="BAKN DPR"
                             fill
                             className="object-cover"
@@ -774,7 +772,7 @@ const Page = () => {
                         </div>
                         <div className="mt-8">
                           <Image
-                            src="/images/bakn-kolaborasi.jpg"
+                            src="/images/dpr/bakn-2.jpg"
                             alt="Kolaborasi BAKN & BPK"
                             width={600}
                             height={400}
@@ -801,7 +799,7 @@ const Page = () => {
                     {/* Header */}
                     <div className="mb-10 text-center">
                       <h1 className="mb-3 text-4xl font-extrabold text-blue-700">
-                        Komunikasi dan Informatika
+                        Komunikasi dan Digital
                       </h1>
                       <p className="text-lg font-medium text-gray-600">
                         Pilar Kemajuan Bangsa di Era Global
@@ -855,7 +853,7 @@ const Page = () => {
                             informasi.
                           </p>
                           <Image
-                            src="/images/komdigi-main.jpg"
+                            src="/images/dpr/komdigi-1.jpg"
                             alt="Transformasi Digital"
                             width={600}
                             height={400}
@@ -948,9 +946,9 @@ const Page = () => {
                             akurat di era digital ini.
                           </p>
                           <Image
-                            src="/images/komdigi-kerja.jpg"
+                            src="/images/dpr/komdigi-2.jpg"
                             alt="Kerja Komdigi"
-                            width={600}
+                            width={400}
                             height={400}
                             className="mx-auto rounded-xl shadow-lg"
                           />
@@ -988,7 +986,7 @@ const Page = () => {
                       <div className="space-y-8">
                         <div className="relative h-80 w-full overflow-hidden rounded-xl shadow-md">
                           <Image
-                            src="/images/pertahanan-main.jpg"
+                            src="/images/dpr/kemhan-1.jpg"
                             alt="Pertahanan Negara"
                             fill
                             className="object-cover"
@@ -1044,7 +1042,7 @@ const Page = () => {
 
                         <div className="mt-8">
                           <Image
-                            src="/images/pertahanan-kerja.jpg"
+                            src="/images/dpr/kemhan-2.jpg"
                             alt="Operasional TNI"
                             width={600}
                             height={400}
@@ -1111,7 +1109,7 @@ const Page = () => {
                       <div className="space-y-8">
                         <div className="relative h-56 w-full overflow-hidden rounded-xl shadow-md">
                           <Image
-                            src="/images/kemenlu-main.jpg"
+                            src="/images/dpr/menlu-1.jpg"
                             alt="Kemenlu Main"
                             fill
                             className="object-cover"
@@ -1181,7 +1179,7 @@ const Page = () => {
                     <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
                       <div className="relative h-56 w-full overflow-hidden rounded-xl shadow-lg">
                         <Image
-                          src="/images/kemenlu-diplomasi.jpg"
+                          src="/images/dpr/menlu-2.jpg"
                           alt="Diplomasi Kemenlu"
                           fill
                           className="object-cover"
@@ -1189,7 +1187,7 @@ const Page = () => {
                       </div>
                       <div className="relative h-56 w-full overflow-hidden rounded-xl shadow-lg">
                         <Image
-                          src="/images/kemenlu-pekerja.jpg"
+                          src="/images/dpr/menlu-3.jpg"
                           alt="Pekerja Migran"
                           fill
                           className="object-cover"
@@ -1197,7 +1195,7 @@ const Page = () => {
                       </div>
                       <div className="relative h-56 w-full overflow-hidden rounded-xl shadow-lg">
                         <Image
-                          src="/images/kemenlu-pertemuan.jpg"
+                          src="/images/dpr/menlu-4.jpg"
                           alt="Pertemuan Diplomatik"
                           fill
                           className="object-cover"
