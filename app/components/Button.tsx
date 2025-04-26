@@ -136,7 +136,7 @@ const Header: React.FC<HeaderProps> = () => {
                 title="Default"
               />
               <CardItem
-                href="/https://www.tiktok.com/@sarifahainunjariyah_?_t=ZS-8vqZCUnmcH2&_r=1"
+                href="https://www.tiktok.com/@sarifahainunjariyah_?_t=ZS-8vqZCUnmcH2&_r=1"
                 imageSrc="/images/tiktok.png"
                 altText="Menu 9"
                 title="Tiktok"
