@@ -6,7 +6,7 @@ const NavbarPage = () => {
     <div>
       {/* NAVBAR */}
       <Navbar fluid rounded>
-        <Navbar.Brand href="#">
+        <Navbar.Brand href="/">
           <Image
             src="/images/logo1.png"
             height={144}
