@@ -636,7 +636,7 @@ const Page = () => {
                         href="/galeri"
                         className={`${jersey15.className} items-center rounded bg-teal-500 px-12 py-2 text-xl text-white outline outline-2 outline-black hover:bg-teal-600`}
                       >
-                        Masuk SUARA SAJ
+                        Masuk Galeri
                       </a>
                     </div>
                   </div>
