@@ -97,3 +97,15 @@ canvas {
     @apply bg-background text-foreground;
   }
 }
+
+.bg-gradient-black {
+  @apply bg-gradient-to-r from-black  to-[#716500];
+}
+
+.bg-gradient-olive {
+  @apply bg-gradient-to-r from-[#D9D9D9]  to-[#D3CD97];
+}
+
+.text-gradient-olive {
+  @apply bg-gradient-to-r from-yellow-300 via-yellow-700 to-black bg-clip-text text-transparent;
+}

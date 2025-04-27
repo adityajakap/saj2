@@ -6,6 +6,7 @@ import "../globals.css";
 import { Jersey_15 } from "next/font/google";
 import { Dekko } from "next/font/google";
 import Button from "../components/Button";
+import Link from "next/link";
 
 const jersey15 = Jersey_15({
   subsets: ["latin"],
@@ -87,36 +88,41 @@ const Page = () => {
           {isMobile ? (
             <>
               {/* Mobile Layout */}
-              <div
-                className="absolute left-[20%] top-[30%] cursor-pointer"
-                onClick={() => setshowProfil(true)}
-              >
-                <Image
-                  src="/images/suara-saj/lihat-suara.gif"
-                  alt="Gedung DPR"
-                  width={250}
-                  height={210}
-                  className="hover-outline"
-                  priority
-                />
-              </div>
+              <Link href="/suara-sajs">
+                <div
+                  className="absolute left-[20%] top-[30%] cursor-pointer"
+                  onClick={() => setshowProfil(true)}
+                >
+                  <Image
+                    src="/images/suara-saj/lihat-suara.gif"
+                    alt="Gedung DPR"
+                    width={250}
+                    height={210}
+                    className="hover-outline"
+                    priority
+                  />
+                </div>
+              </Link>
             </>
           ) : (
             <>
               {/* Desktop Layout */}
-              <div
-                className="absolute left-[40.3%] top-[27.5%] cursor-pointer"
-                onClick={() => setshowProfil(true)}
-              >
-                <Image
-                  src="/images/suara-saj/lihat-suara.gif"
-                  alt="Suara SAJ"
-                  width={400}
-                  height={210}
-                  className="hover-outline"
-                  priority
-                />
-              </div>
+
+              <Link href="/suara-sajs">
+                <div
+                  className="absolute left-[40.3%] top-[27.5%] cursor-pointer"
+                  onClick={() => setshowProfil(true)}
+                >
+                  <Image
+                    src="/images/suara-saj/lihat-suara.gif"
+                    alt="Suara SAJ"
+                    width={400}
+                    height={210}
+                    className="hover-outline"
+                    priority
+                  />
+                </div>
+              </Link>
             </>
           )}
         </div>

@@ -2,6 +2,7 @@ import { getArticles } from "@/lib/api/strapi";
 import { getStrapiMedia } from "@/lib/api/strapi";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import { formatDate } from "@/lib/utils";
@@ -91,7 +92,7 @@ export default async function BeritaPage({
           {/* Category Filter */}
           <div className="flex flex-wrap gap-2">
             <Link
-              href="/berita"
+              href="/beritas"
               className={`px-4 py-2 rounded-full text-sm font-medium transition-colors 
                 ${!currentCategory
                   ? "bg-primary text-white hover:bg-primary/90"
@@ -102,7 +103,7 @@ export default async function BeritaPage({
             {CATEGORIES.map((category) => (
               <Link
                 key={category}
-                href={`/berita?category=${category}`}
+                href={`/beritas?category=${category}`}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors 
                   ${currentCategory === category
                     ? "bg-primary text-white hover:bg-primary/90"
@@ -125,85 +126,96 @@ export default async function BeritaPage({
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-8">
+          <div className="space-y-6">
             {articles.map((article: any) => {
               const imageUrl = article?.featuredImage ? getStrapiMedia(article.featuredImage) : null;
               const categories = getCategories(article);
 
               return (
-                <Card key={article.id} className="overflow-hidden flex flex-col h-full border-0 shadow-md hover:shadow-xl transition-all duration-300 group bg-white !py-0">
-                  <div className="relative h-56 w-full overflow-hidden">
-                    {imageUrl ? (
-                      <Image
-                        src={imageUrl}
-                        alt={article.title || "Article image"}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                    ) : (
-                      <div className="h-full w-full bg-gray-100 flex items-center justify-center">
-                        <p className="text-gray-400">No image</p>
-                      </div>
-                    )}
-                    {/* Gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-
-                  <CardContent className="flex-1 flex flex-col p-6">
-                    {/* Categories */}
-                    <div className="flex flex-wrap gap-2 mb-3">
-                      {categories.map((category: string, index: number) => (
-                        <Link
-                          key={index}
-                          href={`/berita?category=${category}`}
-                        >
-                          <Badge
-                            variant="secondary"
-                            className="bg-primary/10 text-primary hover:bg-primary/20 transition-colors cursor-pointer"
-                          >
-                            {category}
-                          </Badge>
-                        </Link>
-                      ))}
-                    </div>
-
-                    {/* Title */}
-                    <h2 className="text-xl font-bold mb-3 line-clamp-2 group-hover:text-primary transition-colors">
-                      {article?.title || "Untitled"}
-                    </h2>
-
-                    {/*  description */}
-                    <p className="text-gray-600 mb-4 flex-1 line-clamp-3">
-                      {article?.description || "No description available"}
-                    </p>
-
-                    {/* Date and read time */}
-                    <div className="flex items-center text-sm text-gray-500 mb-4">
-                      {article?.publishDate && (
-                        <div className="flex items-center">
-                          <Calendar className="w-4 h-4 mr-1" />
-                          <time>{formatDate(article.publishDate)}</time>
+                <Card
+                  key={article.id}
+                  className="overflow-hidden border-0 !py-0 shadow-md hover:shadow-xl transition-all duration-300 group bg-white"
+                >
+                  <div className="flex flex-col md:flex-row">
+                    {/* Left side - Image */}
+                    <div className="relative h-60 md:h-auto md:w-1/3 overflow-hidden">
+                      {imageUrl ? (
+                        <Image
+                          src={imageUrl}
+                          alt={article.title || "Article image"}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      ) : (
+                        <div className="h-full w-full bg-gray-100 flex items-center justify-center">
+                          <p className="text-gray-400">No image</p>
                         </div>
                       )}
-                      <span className="mx-2">•</span>
-                      <div className="flex items-center">
-                        <Clock className="w-4 h-4 mr-1" />
-                        <span>{calculateReadingTime(article?.content)}</span>
-                      </div>
+                      {/* Gradient overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
 
-                    {/* Read more button */}
-                    <Link
-                      href={`/berita/${article?.slug || article.id}`}
-                      className="inline-flex items-center text-primary font-medium group/link"
-                    >
-                      Baca Selengkapnya
-                      <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover/link:translate-x-1" />
-                    </Link>
-                  </CardContent>
+                    {/* Right side - Content in flex column */}
+                    <div className="flex-1 flex flex-col">
+                      <div className="py-5 px-3">
+                        {/* Title */}
+                        <h2 className="text-xl md:text-2xl font-bold mb-3 line-clamp-2 group-hover:text-primary transition-colors">
+                          {article?.title || "Untitled"}
+                        </h2>
+
+                        {/* Category and Date in flex row */}
+                        <div className="flex flex-wrap items-center gap-3 mb-3">
+                          {/* Categories */}
+                          <div className="flex flex-wrap gap-2">
+                            {categories.map((category: string, index: number) => (
+                              <Link
+                                key={index}
+                                href={`/beritas?category=${category}`}
+                              >
+                                <Badge
+                                  variant="secondary"
+                                  className="bg-primary/10 text-primary hover:bg-primary/20 transition-colors cursor-pointer"
+                                >
+                                  {category}
+                                </Badge>
+                              </Link>
+                            ))}
+                          </div>
+
+                          {/* Date */}
+                          {article?.publishDate && (
+                            <div className="flex items-center text-sm text-gray-500">
+                              <Calendar className="w-4 h-4 mr-1" />
+                              <time>{formatDate(article.publishDate)}</time>
+                            </div>
+                          )}
+
+                          {/* Reading time */}
+                          <div className="flex items-center text-sm text-gray-500">
+                            <Clock className="w-4 h-4 mr-1" />
+                            <span>{calculateReadingTime(article?.content)}</span>
+                          </div>
+                        </div>
+
+                        {/* Description */}
+                        <p className="text-gray-600 mb-6 flex-1 line-clamp-3">
+                          {article?.description || "No description available"}
+                        </p>
+                      </div>
+
+                      {/* Full width button */}
+                      <Button asChild className="underline bg-gradient-black w-full justify-center !rounded-none !py-6">
+                        <Link href={`/beritas/${article?.slug || article.id}`}>
+                          Baca Selengkapnya
+                          <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+                        </Link>
+                      </Button>
+                    </div>
+                  </div>
                 </Card>
               );
             })}
+
             {pagination?.pageCount > 1 && (
               <div className="mt-8">
                 <PaginationControls
@@ -219,4 +231,3 @@ export default async function BeritaPage({
     </div>
   );
 }
-
