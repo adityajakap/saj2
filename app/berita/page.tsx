@@ -5,7 +5,8 @@ import Image from "next/image";
 import "../globals.css";
 import { Jersey_15 } from "next/font/google";
 import { Dekko } from "next/font/google";
-import Button from "../components/Button"; 
+import Button from "../components/Button";
+import Link from "next/link";
 
 const jersey15 = Jersey_15({
   subsets: ["latin"],
@@ -87,36 +88,38 @@ const Page = () => {
           {isMobile ? (
             <>
               {/* Mobile Layout */}
-              <div
-                className="absolute left-[20%] top-[36%] cursor-pointer"
-                onClick={() => setshowProfil(true)}
-              >
-                <Image
-                  src="/images/news/semua-berita.gif"
-                  alt="Gedung DPR"
-                  width={420}
-                  height={210}
-                  className="hover-outline"
-                  priority
-                />
-              </div>
+              <Link href="/beritas">
+                <div
+                  className="absolute left-[20%] top-[36%] cursor-pointer"
+                >
+                  <Image
+                    src="/images/news/semua-berita.gif"
+                    alt="Gedung DPR"
+                    width={420}
+                    height={210}
+                    className="hover-outline"
+                    priority
+                  />
+                </div>
+              </Link>
             </>
           ) : (
             <>
               {/* Desktop Layout */}
-              <div
-                className="absolute left-[40.3%] top-[27.5%] cursor-pointer"
-                onClick={() => setshowProfil(true)}
-              >
-                <Image
-                  src="/images/news/semua-berita.gif"
-                  alt="Profil"
-                  width={400}
-                  height={210}
-                  className="hover-outline"
-                  priority
-                />
-              </div>
+              <Link href="/beritas">
+                <div
+                  className="absolute left-[40.3%] top-[27.5%] cursor-pointer"
+                >
+                  <Image
+                    src="/images/news/semua-berita.gif"
+                    alt="Profil"
+                    width={400}
+                    height={210}
+                    className="hover-outline"
+                    priority
+                  />
+                </div>
+              </Link>
 
               <div
                 className="absolute left-[60.3%] top-[23.5%] cursor-pointer"
