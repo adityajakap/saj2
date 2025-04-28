@@ -76,8 +76,6 @@ const Page = () => {
             top: "0",
           }}
         >
-          <Button />
-
           {/* Background Image as part of the fixed container */}
           <div className="absolute left-0 top-0 size-full">
             <Image
