@@ -21,6 +21,9 @@ export const Header = () => {
 
           {/* desktop */}
           <nav className="hidden md:flex items-center space-x-6">
+            <Link href="/" className="font-medium hover:text-primary">
+              Rumah Digital
+            </Link>
             <Link href="/beritas" className="font-medium hover:text-primary">
               Berita
             </Link>
@@ -44,6 +47,9 @@ export const Header = () => {
         {isMenuOpen && (
           <nav className="pt-4 pb-3 md:hidden">
             <div className="flex flex-col space-y-3">
+              <Link href="/" className="font-medium hover:text-primary">
+                Rumah Digital
+              </Link>
               <Link href="/beritas" className="font-medium py-2 hover:text-primary" onClick={() => setIsMenuOpen(false)}>
                 Berita
               </Link>

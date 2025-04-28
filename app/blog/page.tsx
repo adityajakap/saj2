@@ -80,10 +80,10 @@ export default async function Home() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button asChild size="lg" className="bg-black text-white">
-              <Link href="/berita">Berita Terbaru</Link>
+              <Link href="/beritas">Berita Terbaru</Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="bg-white border-black text-black">
-              <Link href="/gallery">Lihat Gallery</Link>
+              <Link href="/galleries">Lihat Gallery</Link>
             </Button>
           </div>
         </div>
@@ -180,7 +180,7 @@ export default async function Home() {
 
                           {/* Full width button */}
                           <Button asChild className="underline bg-gradient-black w-full justify-center !rounded-none !py-6">
-                            <Link href={`/berita/${article?.slug || article.id}`}>
+                            <Link href={`/beritas/${article?.slug || article.id}`}>
                               Baca Selengkapnya
                               <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
                             </Link>
@@ -208,7 +208,7 @@ export default async function Home() {
                     const imageUrl = firstImage ? getStrapiMedia(firstImage) : null;
 
                     return (
-                      <Link href="/gallery" key={item.id}>
+                      <Link href="/galleries" key={item.id}>
                         <Card className="overflow-hidden flex flex-col h-full cursor-pointer border-0 shadow-md hover:shadow-xl transition-all duration-300 group bg-white !py-0">
                           <div className="relative h-64 w-full overflow-hidden">
                             {imageUrl ? (
