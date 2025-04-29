@@ -47,7 +47,7 @@ jobs:
               echo "Next.js Containre is running successfully"
 
               echo "Recent logs"
-              docker compose log --tail=20 nextjs
+              docker compose logs --tail=20 nextjs
               echo "Deployment completed succesfuly!"
             else
               echo "Error: Next.js Container failed"
