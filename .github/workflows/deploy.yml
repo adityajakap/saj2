@@ -1,0 +1,58 @@
+name: Deploy NextJS Application
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: checkout code
+        uses: actions/checkout@v4
+
+      - name: setup ssh and deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST}}
+          username: ${{ secrets.SSH_USERNAME}}
+          key: ${{ secrets.SSH_PRIVATE_KEY}}
+          port: ${{ secrets.SSH_PORT}}
+          script: |
+            set -e # Exit immediately if a command exits with a non-zero status
+
+          echo "starting deployment for Next.js app..."
+
+          cd ~/saj-website/nextjs
+
+          echo "Pulling latest changes from repos..."
+          git fetch --all
+          git reset --hard origin/main
+
+          cd ~/saj-website
+
+          echo "Cleaning up docker resources..."
+          docker system prune -f
+
+          echo "Rebuilding Next.js container..."
+          docker compose down nextjs
+          docker compose build --no-cache nextjs
+          docker compose up -d nextjs
+
+          echo "Waiting for container to stabilize..."
+          sleep 15
+
+          if docker compose ps | grep -q "nextjs.*Up"; then
+          echo "Next.js Containre is running successfully"
+
+          echo "Recent logs"
+          docker compose log --tail=20 nextjs
+          echo "Deployment completed succesfuly!"
+        else
+          echo "Error: Next.js Container failed"
+          echo "Container logs:"
+          docker compose logs nextjs
+          exit 1
+        fi
+

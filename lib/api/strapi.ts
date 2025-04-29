@@ -1,5 +1,5 @@
 const API_URL =
-  process.env.NEXT_PUBLIC_STRAPI_API_URL || "https://cms.fruz.xyz";
+  process.env.NEXT_PUBLIC_STRAPI_API_URL || "https://cms.sarifahainunjariyah.com";
 
 export function getStrapiURL(path = "") {
   return `${API_URL}${path}`;
