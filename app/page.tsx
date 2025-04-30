@@ -5,7 +5,7 @@ import Image from "next/image";
 import "./globals.css";
 import { Jersey_15 } from "next/font/google";
 import { Dekko } from "next/font/google";
-import Button from "./components/Button";
+import SplashScreen from "./components/SplashScreen";
 
 const jersey15 = Jersey_15({
   subsets: ["latin"],
@@ -76,6 +76,7 @@ const Page = () => {
             top: "0",
           }}
         >
+          <SplashScreen />;
           {/* Background Image as part of the fixed container */}
           <div className="absolute left-0 top-0 size-full">
             <Image
@@ -86,7 +87,6 @@ const Page = () => {
               priority
             />
           </div>
-
           {isMobile ? (
             <>
               {/* Mobile Layout */}
