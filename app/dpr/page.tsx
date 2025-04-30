@@ -1211,7 +1211,7 @@ const Page = () => {
                 onClick={() => setshowBakn(true)}
               >
                 <Image
-                  src="/images/dpr/bakn.gif"
+                  src="/images/dpr/BAKN.gif"
                   alt="Profil"
                   width={180}
                   height={210}
