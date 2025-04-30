@@ -51,7 +51,7 @@ const Page = () => {
   // Loader
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-screen">
+      <div className="flex min-h-screen items-center justify-center">
         <img src="/images/loader.gif" alt="Memuat..." className="w-48" />
       </div>
     );
@@ -84,7 +84,6 @@ const Page = () => {
 
           <Button />
 
-
           {isMobile ? (
             <>
               {/* Mobile Layout */}
@@ -96,8 +95,7 @@ const Page = () => {
                     style={{
                       outline: "5px solid black",
                       outlineOffset: "-3px",
-                      background:
-                        "linear-gradient(to bottom, white 25%, black 25%)",
+                      background: "white",
                     }}
                   >
                     {/* Close Button */}
@@ -128,7 +126,7 @@ const Page = () => {
                         priority
                       />
                     </div>
-                    <p className="mb-6 mt-5 text-white">
+                    <p className="mb-6 mt-5 text-black">
                       <span className="font-light">
                         <strong className="font-bold">Tanggal Lahir:</strong>{" "}
                         <br />
@@ -163,7 +161,7 @@ const Page = () => {
                         priority
                       />
                     </div>
-                    <p className="mb-6 mt-5 text-justify text-white">
+                    <p className="mb-6 mt-5 text-justify text-black">
                       Sarifah Ainun Jariyah, yang akrab disapa
                       <br />
                       Teh Sarifah, adalah seorang politisi <br />

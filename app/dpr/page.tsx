@@ -624,7 +624,7 @@ const Page = () => {
               >
                 <Image
                   src="/images/dpr/bakn-mobile.gif"
-                  alt="Profil"
+                  alt="BAKN"
                   width={150}
                   height={210}
                   className="hover-outline"
@@ -637,8 +637,8 @@ const Page = () => {
                 onClick={() => setshowKomdigi(true)}
               >
                 <Image
-                  src="/images/dpr/komdigi.png"
-                  alt="Profil"
+                  src="/images/dpr/KOMDIGI.png"
+                  alt="Komdigi"
                   width={100}
                   height={210}
                   className="hover-outline"
@@ -651,8 +651,8 @@ const Page = () => {
                 onClick={() => setshowKemhan(true)}
               >
                 <Image
-                  src="/images/dpr/kemhan.png"
-                  alt="Profil"
+                  src="/images/dpr/KEMHAN.png"
+                  alt="Kemenhan"
                   width={100}
                   height={210}
                   className="hover-outline"
@@ -665,8 +665,8 @@ const Page = () => {
                 onClick={() => setshowLuar(true)}
               >
                 <Image
-                  src="/images/dpr/luar-negri.png"
-                  alt="Profil"
+                  src="/images/dpr/LUAR-NEGRI.png"
+                  alt="Luar Negeri"
                   width={170}
                   height={210}
                   className="hover-outline"
@@ -1225,8 +1225,8 @@ const Page = () => {
                 onClick={() => setshowKomdigi(true)}
               >
                 <Image
-                  src="/images/dpr/komdigi.png"
-                  alt="Profil"
+                  src="/images/dpr/KOMDIGI.png"
+                  alt="komdigi"
                   width={120}
                   height={210}
                   className="hover-outline"
@@ -1239,8 +1239,8 @@ const Page = () => {
                 onClick={() => setshowKemhan(true)}
               >
                 <Image
-                  src="/images/dpr/kemhan.png"
-                  alt="Profil"
+                  src="/images/dpr/KEMHAN.png"
+                  alt="kemenhan"
                   width={120}
                   height={210}
                   className="hover-outline"
@@ -1253,8 +1253,8 @@ const Page = () => {
                 onClick={() => setshowLuar(true)}
               >
                 <Image
-                  src="/images/dpr/luar-negri.png"
-                  alt="Profil"
+                  src="/images/dpr/LUAR-NEGRI.png"
+                  alt="Luar Negri"
                   width={170}
                   height={210}
                   className="hover-outline"
