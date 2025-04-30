@@ -36,14 +36,22 @@ export default function SplashScreen() {
           <div className="absolute top-20 z-20 flex flex-col items-center space-y-4">
             <h1
               className={`${jersey15.className} text-center text-4xl font-bold text-white`}
-              style={{ textShadow: "0 0 5px black, 0 0 5px black" }}
+              style={{
+                WebkitTextStroke: "1px black",
+                color: "white",
+                WebkitTextFillColor: "white",
+              }}
             >
               Selamat Datang di Rumah Digital-nya
             </h1>
 
             <h1
               className={`${jersey15.className} text-center text-5xl font-semibold text-white`}
-              style={{ textShadow: "0 0 5px black, 0 0 5px black" }}
+              style={{
+                WebkitTextStroke: "1px black",
+                color: "white",
+                WebkitTextFillColor: "white",
+              }}
             >
               Sarifah Ainun Jariyah
             </h1>
