@@ -3,19 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import "../globals.css";
-import { Jersey_15 } from "next/font/google";
-import { Dekko } from "next/font/google";
 import Button from "../components/Button";
-
-const jersey15 = Jersey_15({
-  subsets: ["latin"],
-  weight: ["400"],
-});
-
-const dekko = Dekko({
-  subsets: ["latin"],
-  weight: ["400"],
-});
 
 const Page = () => {
   const [isMobile, setIsMobile] = useState(false);

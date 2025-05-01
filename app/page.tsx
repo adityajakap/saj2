@@ -369,6 +369,59 @@ const Page = () => {
                 </div>
               )}
 
+              {showKunjungan && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+                  <div
+                    className="relative rounded-lg bg-white p-6 shadow-lg"
+                    style={{
+                      outline: "5px solid black",
+                      outlineOffset: "-3px",
+                    }}
+                  >
+                    {/* Close Button */}
+                    <button
+                      className="absolute right-4 top-4 z-10 rounded-full bg-gray-400 px-3 py-1 text-sm text-black transition hover:bg-gray-600"
+                      onClick={() => setshowKunjungan(false)}
+                    >
+                      ✕
+                    </button>
+                    {/* Applying the font here */}
+                    <h2
+                      className={`${jersey15.className} mb-4 text-center text-5xl font-bold text-white`}
+                      style={{
+                        textShadow:
+                          "3px 3px 0 black, -3px 3px 0 black, 3px -3px 0 black, -3px -3px 0 black",
+                      }}
+                    >
+                      Dapil
+                    </h2>
+                    <div className="flex justify-center">
+                      <Image
+                        src="/images/dapil-1.png"
+                        alt="Profile Picture"
+                        width={300}
+                        height={245}
+                        className=""
+                        priority
+                      />
+                    </div>
+                    <p className={`${dekko.className} mb-6`}>
+                      Kunjungan Dapil berisikan berbagai aktivitas<br></br> Teh
+                      Sarifah dalam kunjungannya ke daerah Banten.<br></br> Anda
+                      mau masuk Kunjungan Dapil?
+                    </p>
+                    <div className="flex justify-center">
+                      <a
+                        href="/dapil"
+                        className={`${jersey15.className} items-center rounded bg-teal-500 px-12 py-2 text-xl text-white outline outline-2 outline-black hover:bg-teal-600`}
+                      >
+                        Masuk Dapil
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              )}
+
               <div
                 className="absolute left-[55%] top-[59%]"
                 onClick={() => setshowArticle(true)}
@@ -398,7 +451,7 @@ const Page = () => {
               </div>
 
               <div
-                className="absolute left-[10%] top-[37%]"
+                className="absolute left-[1%] top-[37%]"
                 onClick={() => setshowGallery(true)}
               >
                 <Image
@@ -412,13 +465,27 @@ const Page = () => {
               </div>
 
               <div
-                className="absolute left-[46%] top-[27%]"
+                className="absolute left-[32.5%] top-[30%]"
                 onClick={() => setshowSAJ(true)}
               >
                 <Image
                   src="/images/suara-saj.webp"
                   alt="Suara SAJ"
-                  width={185}
+                  width={170}
+                  height={192}
+                  className="hover-outline cursor-pointer"
+                  priority
+                />
+              </div>
+
+              <div
+                className="absolute left-[60%] top-[26%]"
+                onClick={() => setshowKunjungan(true)}
+              >
+                <Image
+                  src="/images/dapil.webp"
+                  alt="Suara SAJ"
+                  width={170}
                   height={192}
                   className="hover-outline cursor-pointer"
                   priority
@@ -694,6 +761,59 @@ const Page = () => {
                 </div>
               )}
 
+              {showKunjungan && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+                  <div
+                    className="relative rounded-lg bg-white p-6 shadow-lg"
+                    style={{
+                      outline: "5px solid black",
+                      outlineOffset: "-3px",
+                    }}
+                  >
+                    {/* Close Button */}
+                    <button
+                      className="absolute right-4 top-4 z-10 rounded-full bg-gray-400 px-3 py-1 text-sm text-black transition hover:bg-gray-600"
+                      onClick={() => setshowKunjungan(false)}
+                    >
+                      ✕
+                    </button>
+                    {/* Applying the font here */}
+                    <h2
+                      className={`${jersey15.className} mb-4 text-center text-5xl font-bold text-white`}
+                      style={{
+                        textShadow:
+                          "3px 3px 0 black, -3px 3px 0 black, 3px -3px 0 black, -3px -3px 0 black",
+                      }}
+                    >
+                      Dapil
+                    </h2>
+                    <div className="flex justify-center">
+                      <Image
+                        src="/images/dapil-1.png"
+                        alt="Profile Picture"
+                        width={300}
+                        height={245}
+                        className=""
+                        priority
+                      />
+                    </div>
+                    <p className={`${dekko.className} mb-6`}>
+                      Kunjungan Dapil berisikan berbagai aktivitas<br></br> Teh
+                      Sarifah dalam kunjungannya ke daerah Banten.<br></br> Anda
+                      mau masuk Kunjungan Dapil?
+                    </p>
+                    <div className="flex justify-center">
+                      <a
+                        href="/dapil"
+                        className={`${jersey15.className} items-center rounded bg-teal-500 px-12 py-2 text-xl text-white outline outline-2 outline-black hover:bg-teal-600`}
+                      >
+                        Masuk Dapil
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              )}
+
               <div
                 className="absolute left-[55%] top-[50%]"
                 onClick={() => setshowArticle(true)}
@@ -743,6 +863,20 @@ const Page = () => {
                 <Image
                   src="/images/suara-saj.webp"
                   alt="Suara SAJ"
+                  width={230}
+                  height={192}
+                  className="hover-outline cursor-pointer"
+                  priority
+                />
+              </div>
+
+              <div
+                className="absolute left-[55%] top-[20%]"
+                onClick={() => setshowKunjungan(true)}
+              >
+                <Image
+                  src="/images/dapil.webp"
+                  alt="Kunjungan Dapil"
                   width={230}
                   height={192}
                   className="hover-outline cursor-pointer"

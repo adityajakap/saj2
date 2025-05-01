@@ -6,7 +6,7 @@ import "../globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Berita | SAJ",
+  title: "Dapil | SAJ",
   description: "Official website of Sarifah Ainun Jariyah, DPR RI for Banten.",
 };
 

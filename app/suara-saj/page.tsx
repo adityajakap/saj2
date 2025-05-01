@@ -3,20 +3,8 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import "../globals.css";
-import { Jersey_15 } from "next/font/google";
-import { Dekko } from "next/font/google";
 import Button from "../components/Button";
 import Link from "next/link";
-
-const jersey15 = Jersey_15({
-  subsets: ["latin"],
-  weight: ["400"],
-});
-
-const dekko = Dekko({
-  subsets: ["latin"],
-  weight: ["400"],
-});
 
 const Page = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -52,7 +40,7 @@ const Page = () => {
   // Loader
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-screen">
+      <div className="flex min-h-screen items-center justify-center">
         <img src="/images/loader.gif" alt="Memuat..." className="w-48" />
       </div>
     );
