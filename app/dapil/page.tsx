@@ -485,19 +485,19 @@ const Page = () => {
                 />
               </div>
 
-              <div
-                className="absolute left-0 top-[11.9%] cursor-pointer"
+                <div
+                className="absolute left-0 top-[10.9%] cursor-pointer opacity-0"
                 onClick={() => setshowSerang(true)}
-              >
+                >
                 <Image
                   src="/images/dapil/serang.png"
-                  alt="Kemenhan"
+                  alt="Serang"
                   width={170}
                   height={210}
                   className="hover-outline"
                   priority
                 />
-              </div>
+                </div>
 
               <div
                 className="absolute left-[70.3%] top-[20.5%] cursor-pointer"
