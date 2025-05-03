@@ -451,6 +451,20 @@ const Page = () => {
               </div>
 
               <div
+                className="absolute left-[32.5%] top-[30%]"
+                onClick={() => setshowSAJ(true)}
+              >
+                <Image
+                  src="/images/suara-saj.webp"
+                  alt="Suara SAJ"
+                  width={170}
+                  height={192}
+                  className="hover-outline cursor-pointer"
+                  priority
+                />
+              </div>
+
+              <div
                 className="absolute left-[1%] top-[37%]"
                 onClick={() => setshowGallery(true)}
               >
@@ -464,19 +478,7 @@ const Page = () => {
                 />
               </div>
 
-              <div
-                className="absolute left-[32.5%] top-[30%]"
-                onClick={() => setshowSAJ(true)}
-              >
-                <Image
-                  src="/images/suara-saj.webp"
-                  alt="Suara SAJ"
-                  width={170}
-                  height={192}
-                  className="hover-outline cursor-pointer"
-                  priority
-                />
-              </div>
+
 
               <div
                 className="absolute left-[60%] top-[26%]"
