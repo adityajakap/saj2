@@ -449,6 +449,20 @@ const Page = () => {
                   priority
                 />
               </div>
+              
+              <div
+                className="absolute left-[60%] top-[26%]"
+                onClick={() => setshowKunjungan(true)}
+              >
+                <Image
+                  src="/images/dapil.webp"
+                  alt="Suara SAJ"
+                  width={170}
+                  height={192}
+                  className="hover-outline cursor-pointer"
+                  priority
+                />
+              </div>
 
               <div
                 className="absolute left-[32.5%] top-[30%]"
@@ -480,19 +494,7 @@ const Page = () => {
 
 
 
-              <div
-                className="absolute left-[60%] top-[26%]"
-                onClick={() => setshowKunjungan(true)}
-              >
-                <Image
-                  src="/images/dapil.webp"
-                  alt="Suara SAJ"
-                  width={170}
-                  height={192}
-                  className="hover-outline cursor-pointer"
-                  priority
-                />
-              </div>
+    
             </>
           ) : (
             <>
