@@ -449,15 +449,15 @@ const Page = () => {
                   priority
                 />
               </div>
-
+              
               <div
-                className="absolute left-[1%] top-[37%]"
-                onClick={() => setshowGallery(true)}
+                className="absolute left-[60%] top-[26%]"
+                onClick={() => setshowKunjungan(true)}
               >
                 <Image
-                  src="/images/galeri.webp"
-                  alt="Gedung Galeri"
-                  width={185}
+                  src="/images/dapil.webp"
+                  alt="Suara SAJ"
+                  width={170}
                   height={192}
                   className="hover-outline cursor-pointer"
                   priority
@@ -479,18 +479,22 @@ const Page = () => {
               </div>
 
               <div
-                className="absolute left-[60%] top-[26%]"
-                onClick={() => setshowKunjungan(true)}
+                className="absolute left-[1%] top-[37%]"
+                onClick={() => setshowGallery(true)}
               >
                 <Image
-                  src="/images/dapil.webp"
-                  alt="Suara SAJ"
-                  width={170}
+                  src="/images/galeri.webp"
+                  alt="Gedung Galeri"
+                  width={185}
                   height={192}
                   className="hover-outline cursor-pointer"
                   priority
                 />
               </div>
+
+
+
+    
             </>
           ) : (
             <>
