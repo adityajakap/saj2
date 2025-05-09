@@ -10,8 +10,9 @@ const Page = () => {
   const [showBiografi, setShowBiografi] = useState(false);
   const [loading, setLoading] = useState(true);
   const [hasMounted, setHasMounted] = useState(false);
+  const [showPerjalanan, setShowPerjalanan] = useState(false);
+  const [showFokus, setShowFokus] = useState(false);
 
-  // Set hasMounted true setelah komponen dimount
   useEffect(() => {
     setHasMounted(true);
   }, []);
@@ -351,6 +352,34 @@ const Page = () => {
                   src="/images/laptop.png"
                   alt="Profil"
                   width={200}
+                  height={210}
+                  className="hover-outline"
+                  priority
+                />
+              </div>
+
+              <div
+                className="absolute left-[34.9%] top-[19.3%] cursor-pointer"
+                onClick={() => setShowFokus(true)}
+              >
+                <Image
+                  src="/images/fokus-kerja.png"
+                  alt="Profil"
+                  width={120}
+                  height={210}
+                  className="hover-outline"
+                  priority
+                />
+              </div>
+
+              <div
+                className="absolute left-[45.9%] top-[19.3%] cursor-pointer"
+                onClick={() => setShowPerjalanan(true)}
+              >
+                <Image
+                  src="/images/perjalanan-karir.png"
+                  alt="Profil"
+                  width={120}
                   height={210}
                   className="hover-outline"
                   priority
