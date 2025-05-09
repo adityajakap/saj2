@@ -12,6 +12,7 @@ const Page = () => {
   const [hasMounted, setHasMounted] = useState(false);
   const [showPerjalanan, setShowPerjalanan] = useState(false);
   const [showFokus, setShowFokus] = useState(false);
+  const [showVisi, setShowVisi] = useState(false);
 
   useEffect(() => {
     setHasMounted(true);
@@ -77,16 +78,123 @@ const Page = () => {
             <>
               {/* Mobile Layout */}
 
+              {showFokus && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4">
+                  <div className="relative max-h-[90vh] w-full max-w-6xl overflow-y-auto rounded-2xl bg-white px-6 py-10 shadow-2xl ring-4 ring-black scrollbar-hide md:px-12 md:py-14">
+                    {/* Close Button */}
+                    <button
+                      className="absolute right-4 top-4 rounded-full bg-gray-400 px-3 py-1 text-sm text-black hover:bg-gray-500"
+                      onClick={() => setShowFokus(false)}
+                    >
+                      X
+                    </button>
+
+                    <h2 className="mb-6 text-center text-2xl font-extrabold text-gray-800">
+                      FOKUS KERJA DI DAERAH PEMILIHAN
+                    </h2>
+
+                    <p className="mb-8 text-center text-gray-700">
+                      Sebagai wakil rakyat dari Dapil Banten II, Teh Sarifah
+                      berkomitmen untuk:
+                    </p>
+
+                    <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+                      {/* Card 1 */}
+                      <div className="rounded-lg border border-gray-300 p-6 shadow-md transition-shadow hover:shadow-lg">
+                        <h3 className="mb-2 text-xl font-semibold text-indigo-700">
+                          1. Peningkatan Digitalisasi
+                        </h3>
+                        <p className="text-justify text-gray-700">
+                          Upaya meningkatkan akses masyarakat terhadap teknologi
+                          digital dan konektivitas internet. Program ini
+                          mencakup penyediaan infrastruktur internet yang lebih
+                          merata, terutama di daerah terpencil, peningkatan
+                          literasi digital masyarakat, dan penguatan kemampuan
+                          masyarakat untuk menggunakan teknologi dalam
+                          pendidikan, pekerjaan, dan pelayanan publik.
+                        </p>
+                      </div>
+
+                      {/* Card 2 */}
+                      <div className="rounded-lg border border-gray-300 p-6 shadow-md transition-shadow hover:shadow-lg">
+                        <h3 className="mb-2 text-xl font-semibold text-indigo-700">
+                          2. Pengembangan UMKM melalui Digital
+                        </h3>
+                        <p className="text-justify text-gray-700">
+                          Pemberdayaan UMKM melalui teknologi digital untuk
+                          memperluas pasar melalui e-commerce, meningkatkan
+                          efisiensi operasional, serta memberikan pelatihan dan
+                          pendampingan. Termasuk juga akses ke fintech dan
+                          promosi UMKM melalui kampanye digital yang efektif.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="mt-10 text-center text-gray-800">
+                      <p>
+                        Teh Sarifah aktif turun ke lapangan untuk mendengar
+                        langsung aspirasi masyarakat di Banten. Baginya, semua
+                        persoalan bermuara pada pentingnya pendidikan yang
+                        berkualitas.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {showPerjalanan && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4">
+                  <div className="relative max-h-[90vh] w-full max-w-6xl overflow-y-auto rounded-2xl bg-white px-6 py-10 shadow-2xl ring-4 ring-black scrollbar-hide md:px-12 md:py-14">
+                    {/* Close Button */}
+                    <button
+                      className="absolute right-2 top-2 rounded-full bg-gray-400 px-3 py-1 text-sm text-black hover:bg-gray-500"
+                      onClick={() => setShowPerjalanan(false)}
+                    >
+                      X
+                    </button>
+
+                    <h2 className="mb-2 text-center text-lg font-bold text-black">
+                      PERJALANAN KARIER POLITIK
+                    </h2>
+
+                    <div className="mb-5 flex justify-center">
+                      <Image
+                        src="/images/biografi-1.png"
+                        alt="Teh Sarifah"
+                        width={300}
+                        height={245}
+                        priority
+                      />
+                    </div>
+
+                    <p className="mb-6 text-justify text-black">
+                      Teh Sarifah memulai karier politiknya sebagai anggota DPRD
+                      Kabupaten Penajam Paser Utara, Kalimantan Timur, pada
+                      periode 2009–2014. Namun, ia sempat vakum dari dunia
+                      politik setelah menikah dan hamil pada tahun 2015.
+                      <br />
+                      <br />
+                      Pada tahun yang sama, ia melahirkan bayi kembar tiga yang
+                      sayangnya meninggal dunia. Setahun kemudian, pada 2016,
+                      Teh Sarifah kembali melahirkan bayi kembar tiga yang kini
+                      tumbuh sehat. Selama masa vakum tersebut, ia fokus menjadi
+                      ibu rumah tangga dan menjalankan usaha.
+                      <br />
+                      <br />
+                      Pada tahun 2019, semangatnya untuk terjun kembali ke dunia
+                      politik tak dapat dibendung. PDI Perjuangan memberikan
+                      kesempatan baginya untuk menjadi calon anggota legislatif
+                      pada Pemilu 2024. Pilihannya pada PDI Perjuangan didorong
+                      oleh kekagumannya kepada Ketua Umum PDI Perjuangan,
+                      Megawati Soekarnoputri.
+                    </p>
+                  </div>
+                </div>
+              )}
+
               {showBiografi && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-                  <div
-                    className="relative max-h-[90vh] overflow-y-auto rounded-lg p-4 shadow-lg scrollbar-hide"
-                    style={{
-                      outline: "5px solid black",
-                      outlineOffset: "-3px",
-                      background: "white",
-                    }}
-                  >
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4">
+                  <div className="relative max-h-[90vh] w-full max-w-6xl overflow-y-auto rounded-2xl bg-white px-6 py-10 shadow-2xl ring-4 ring-black scrollbar-hide md:px-12 md:py-14">
                     {/* Close Button */}
                     <button
                       className="absolute right-2 top-2 rounded-full bg-gray-400 px-3 py-1 text-sm text-black hover:bg-gray-500"
@@ -166,6 +274,54 @@ const Page = () => {
                   </div>
                 </div>
               )}
+              {showVisi && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4">
+                  <div className="relative max-h-[90vh] w-full max-w-6xl overflow-y-auto rounded-2xl bg-white px-6 py-10 shadow-2xl ring-4 ring-black scrollbar-hide md:px-12 md:py-14">
+                    {/* Close Button */}
+                    <button
+                      className="absolute right-4 top-4 rounded-full bg-gray-400 px-3 py-1 text-sm text-black hover:bg-gray-500"
+                      onClick={() => setShowVisi(false)}
+                    >
+                      X
+                    </button>
+
+                    <div className="flex flex-col items-center text-center">
+                      <h2 className="mb-4 text-3xl font-extrabold text-indigo-800">
+                        VISI & DEDIKASI
+                      </h2>
+
+                      <Image
+                        src="/images/kunjungan.png" // Ganti sesuai nama file gambarnya
+                        alt="Teh Sarifah Visi"
+                        width={280}
+                        height={240}
+                        className="mb-6 rounded-lg shadow-lg"
+                        priority
+                      />
+
+                      <p className="max-w-2xl text-lg leading-relaxed text-gray-800">
+                        Dengan latar belakang yang kuat dalam dunia politik
+                        serta pengalaman pribadi yang mendalam,
+                        <span className="font-semibold text-indigo-700">
+                          {" "}
+                          Sarifah Ainun Jariyah
+                        </span>{" "}
+                        memiliki visi untuk membawa
+                        <span className="font-semibold">
+                          {" "}
+                          perubahan positif
+                        </span>{" "}
+                        bagi masyarakat Banten. Ia berkomitmen terhadap
+                        kebijakan yang{" "}
+                        <span className="font-semibold text-indigo-700">
+                          inovatif, inklusif
+                        </span>
+                        , dan berpihak pada kepentingan rakyat.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
 
               <div
                 className="absolute left-[48%] top-[35%] cursor-pointer"
@@ -183,7 +339,7 @@ const Page = () => {
 
               <div
                 className="absolute left-[6%] top-[53%] cursor-pointer"
-                onClick={() => setShowBiografi(true)}
+                onClick={() => setShowVisi(true)}
               >
                 <Image
                   src="/images/laptop.png"
@@ -194,10 +350,201 @@ const Page = () => {
                   priority
                 />
               </div>
+
+              <div
+                className="absolute left-[2.9%] top-[23.3%] cursor-pointer"
+                onClick={() => setShowFokus(true)}
+              >
+                <Image
+                  src="/images/fokus-kerja.png"
+                  alt="Profil"
+                  width={80}
+                  height={210}
+                  className="hover-outline"
+                  priority
+                />
+              </div>
+
+              <div
+                className="absolute left-[40%] top-[19.3%] cursor-pointer"
+                onClick={() => setShowPerjalanan(true)}
+              >
+                <Image
+                  src="/images/perjalanan-karir.png"
+                  alt="Profil"
+                  width={80}
+                  height={210}
+                  className="hover-outline"
+                  priority
+                />
+              </div>
             </>
           ) : (
             <>
               {/* Desktop Layout */}
+
+              {showVisi && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md">
+                  <div className="relative max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-xl bg-gradient-to-br from-white via-indigo-50 to-white p-10 shadow-2xl">
+                    {/* Close Button */}
+                    <button
+                      className="absolute right-4 top-4 rounded-full bg-gray-400 px-3 py-1 text-sm text-black hover:bg-gray-500"
+                      onClick={() => setShowVisi(false)}
+                    >
+                      X
+                    </button>
+
+                    <div className="flex flex-col items-center text-center">
+                      <h2 className="mb-4 text-3xl font-extrabold text-indigo-800">
+                        VISI & DEDIKASI
+                      </h2>
+
+                      <Image
+                        src="/images/kunjungan.png" // Ganti sesuai nama file gambarnya
+                        alt="Teh Sarifah Visi"
+                        width={280}
+                        height={240}
+                        className="mb-6 rounded-lg shadow-lg"
+                        priority
+                      />
+
+                      <p className="max-w-2xl text-lg leading-relaxed text-gray-800">
+                        Dengan latar belakang yang kuat dalam dunia politik
+                        serta pengalaman pribadi yang mendalam,
+                        <span className="font-semibold text-indigo-700">
+                          {" "}
+                          Sarifah Ainun Jariyah
+                        </span>{" "}
+                        memiliki visi untuk membawa
+                        <span className="font-semibold">
+                          {" "}
+                          perubahan positif
+                        </span>{" "}
+                        bagi masyarakat Banten. Ia berkomitmen terhadap
+                        kebijakan yang{" "}
+                        <span className="font-semibold text-indigo-700">
+                          inovatif, inklusif
+                        </span>
+                        , dan berpihak pada kepentingan rakyat.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {showFokus && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm transition-opacity">
+                  <div className="relative max-h-[90vh] w-full max-w-6xl overflow-y-auto rounded-xl bg-white p-10 shadow-xl">
+                    {/* Close Button */}
+                    <button
+                      className="absolute right-4 top-4 rounded-full bg-gray-400 px-3 py-1 text-sm text-black hover:bg-gray-500"
+                      onClick={() => setShowFokus(false)}
+                    >
+                      X
+                    </button>
+
+                    <h2 className="mb-6 text-center text-2xl font-extrabold text-gray-800">
+                      FOKUS KERJA DI DAERAH PEMILIHAN
+                    </h2>
+
+                    <p className="mb-8 text-center text-gray-700">
+                      Sebagai wakil rakyat dari Dapil Banten II, Teh Sarifah
+                      berkomitmen untuk:
+                    </p>
+
+                    <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+                      {/* Card 1 */}
+                      <div className="rounded-lg border border-gray-300 p-6 shadow-md transition-shadow hover:shadow-lg">
+                        <h3 className="mb-2 text-xl font-semibold text-indigo-700">
+                          1. Peningkatan Digitalisasi
+                        </h3>
+                        <p className="text-justify text-gray-700">
+                          Upaya meningkatkan akses masyarakat terhadap teknologi
+                          digital dan konektivitas internet. Program ini
+                          mencakup penyediaan infrastruktur internet yang lebih
+                          merata, terutama di daerah terpencil, peningkatan
+                          literasi digital masyarakat, dan penguatan kemampuan
+                          masyarakat untuk menggunakan teknologi dalam
+                          pendidikan, pekerjaan, dan pelayanan publik.
+                        </p>
+                      </div>
+
+                      {/* Card 2 */}
+                      <div className="rounded-lg border border-gray-300 p-6 shadow-md transition-shadow hover:shadow-lg">
+                        <h3 className="mb-2 text-xl font-semibold text-indigo-700">
+                          2. Pengembangan UMKM melalui Digital
+                        </h3>
+                        <p className="text-justify text-gray-700">
+                          Pemberdayaan UMKM melalui teknologi digital untuk
+                          memperluas pasar melalui e-commerce, meningkatkan
+                          efisiensi operasional, serta memberikan pelatihan dan
+                          pendampingan. Termasuk juga akses ke fintech dan
+                          promosi UMKM melalui kampanye digital yang efektif.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="mt-10 text-center text-gray-800">
+                      <p>
+                        Teh Sarifah aktif turun ke lapangan untuk mendengar
+                        langsung aspirasi masyarakat di Banten. Baginya, semua
+                        persoalan bermuara pada pentingnya pendidikan yang
+                        berkualitas.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {showPerjalanan && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm transition-opacity">
+                  <div className="relative max-h-[90vh] w-full max-w-5xl overflow-y-auto rounded-2xl bg-white p-8 shadow-2xl">
+                    {/* Close Button */}
+                    <button
+                      className="absolute right-2 top-2 rounded-full bg-gray-400 px-3 py-1 text-sm text-black hover:bg-gray-500"
+                      onClick={() => setShowPerjalanan(false)}
+                    >
+                      X
+                    </button>
+
+                    <h2 className="mb-2 text-center text-lg font-bold text-black">
+                      PERJALANAN KARIER POLITIK
+                    </h2>
+
+                    <div className="mb-5 flex justify-center">
+                      <Image
+                        src="/images/biografi-1.png"
+                        alt="Teh Sarifah"
+                        width={300}
+                        height={245}
+                        priority
+                      />
+                    </div>
+
+                    <p className="mb-6 text-justify text-black">
+                      Teh Sarifah memulai karier politiknya sebagai anggota DPRD
+                      Kabupaten Penajam Paser Utara, Kalimantan Timur, pada
+                      periode 2009–2014. Namun, ia sempat vakum dari dunia
+                      politik setelah menikah dan hamil pada tahun 2015.
+                      <br />
+                      <br />
+                      Pada tahun yang sama, ia melahirkan bayi kembar tiga yang
+                      sayangnya meninggal dunia. Setahun kemudian, pada 2016,
+                      Teh Sarifah kembali melahirkan bayi kembar tiga yang kini
+                      tumbuh sehat. Selama masa vakum tersebut, ia fokus menjadi
+                      ibu rumah tangga dan menjalankan usaha.
+                      <br />
+                      <br />
+                      Pada tahun 2019, semangatnya untuk terjun kembali ke dunia
+                      politik tak dapat dibendung. PDI Perjuangan memberikan
+                      kesempatan baginya untuk menjadi calon anggota legislatif
+                      pada Pemilu 2024. Pilihannya pada PDI Perjuangan didorong
+                      oleh kekagumannya kepada Ketua Umum PDI Perjuangan,
+                      Megawati Soekarnoputri.
+                    </p>
+                  </div>
+                </div>
+              )}
 
               {showBiografi && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 transition-opacity">
@@ -346,7 +693,7 @@ const Page = () => {
 
               <div
                 className="absolute left-[37.3%] top-[50.5%] cursor-pointer"
-                onClick={() => setShowBiografi(true)}
+                onClick={() => setShowVisi(true)}
               >
                 <Image
                   src="/images/laptop.png"
