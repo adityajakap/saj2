@@ -352,7 +352,7 @@ const Page = () => {
               </div>
 
               <div
-                className="absolute left-[2.9%] top-[23.3%] cursor-pointer"
+                className="absolute left-[2.9%] top-[22.3%] cursor-pointer"
                 onClick={() => setShowFokus(true)}
               >
                 <Image

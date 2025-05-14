@@ -66,7 +66,7 @@ const Page = () => {
           {/* Background Image as part of the fixed container */}
           <div className="absolute left-0 top-0 size-full">
             <Image
-              src="/images/dapil/bg.png"
+              src="/images/dapil/bg-1.png"
               alt="Background Image"
               layout="fill"
               objectFit="cover"
@@ -488,6 +488,7 @@ const Page = () => {
               <div
                 className="absolute left-0 top-[11.9%] cursor-pointer"
                 onClick={() => setshowSerang(true)}
+                style={{ opacity: 0 }}
               >
                 <Image
                   src="/images/dapil/serang.png"
@@ -932,6 +933,7 @@ const Page = () => {
               <div
                 className="absolute left-[36.3%] top-[10%] cursor-pointer"
                 onClick={() => setshowSerang(true)}
+                style={{ opacity: 0 }}
               >
                 <Image
                   src="/images/dapil/serang.png"
