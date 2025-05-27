@@ -130,7 +130,7 @@ const Header: React.FC<HeaderProps> = () => {
                 title="Instagram"
               />
               <CardItem
-                href="/galleries"
+                href="/blog"
                 imageSrc="/images/default.png"
                 altText="Menu 8"
                 title="Default"
