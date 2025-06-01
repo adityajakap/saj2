@@ -449,13 +449,13 @@ const Page = () => {
                   priority
                 />
               </div>
-              
+
               <div
                 className="absolute left-[60%] top-[26%]"
                 onClick={() => setshowKunjungan(true)}
               >
                 <Image
-                  src="/images/dapil.webp"
+                  src="/images/dapil.gif"
                   alt="Suara SAJ"
                   width={170}
                   height={192}
@@ -491,10 +491,6 @@ const Page = () => {
                   priority
                 />
               </div>
-
-
-
-    
             </>
           ) : (
             <>
@@ -879,7 +875,7 @@ const Page = () => {
                 onClick={() => setshowKunjungan(true)}
               >
                 <Image
-                  src="/images/dapil.webp"
+                  src="/images/dapil.gif"
                   alt="Kunjungan Dapil"
                   width={230}
                   height={192}
