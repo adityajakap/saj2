@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Jersey_15 } from "next/font/google";
 
@@ -11,12 +10,21 @@ const jersey15 = Jersey_15({
 });
 
 export default function SplashScreen() {
-  const [isVisible, setIsVisible] = useState(true);
-  const router = useRouter();
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const hasVisited = localStorage.getItem("hasVisited");
+      if (!hasVisited) {
+        setIsVisible(true);
+        localStorage.setItem("hasVisited", "true");
+      }
+    }
+  }, []);
 
   const handleEnter = () => {
     setIsVisible(false);
-    setTimeout(() => {}, 1000); // Sesuai dengan durasi animasi dissolve
+    // Jika ingin menunggu animasi selesai, bisa tambahkan setTimeout di sini
   };
 
   return (
@@ -44,7 +52,6 @@ export default function SplashScreen() {
             >
               Selamat Datang di Rumah Digital-nya
             </h1>
-
             <h1
               className={`${jersey15.className} text-center text-5xl font-semibold text-white`}
               style={{
@@ -55,6 +62,18 @@ export default function SplashScreen() {
             >
               Sarifah Ainun Jariyah
             </h1>
+            <div className="mt-6 flex w-full flex-row items-center justify-between px-8">
+              <img
+                src="images/hooks/logo-pdi.png"
+                alt="Logo Kiri"
+                className="size-24 object-contain"
+              />
+              <img
+                src="images/hooks/logo-dpr.png"
+                alt="Logo Kanan"
+                className="size-24 object-contain"
+              />
+            </div>
           </div>
           <img
             src="images/hooks/teh-sarifah.gif"
