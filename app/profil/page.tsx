@@ -64,7 +64,7 @@ const Page = () => {
           {/* Background Image as part of the fixed container */}
           <div className="absolute left-0 top-0 size-full">
             <Image
-              src="/images/profil-bg1.png"
+              src="/images/profil-bg2.png"
               alt="Background Image"
               layout="fill"
               objectFit="cover"
@@ -720,7 +720,7 @@ const Page = () => {
               </div>
 
               <div
-                className="absolute left-[45.9%] top-[19.3%] cursor-pointer"
+                className="absolute left-[45.9%] top-[17%] cursor-pointer"
                 onClick={() => setShowPerjalanan(true)}
               >
                 <Image

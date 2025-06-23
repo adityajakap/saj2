@@ -201,7 +201,7 @@ const Page = () => {
                     {/* Header */}
                     <div className="mb-10 text-center">
                       <h1 className="mb-3 text-4xl font-extrabold text-blue-700">
-                        Komunikasi dan Informatika
+                        Digitalisasi dan Penyiaran
                       </h1>
                       <p className="text-lg font-medium text-gray-600">
                         Pilar Kemajuan Bangsa di Era Global
@@ -787,7 +787,7 @@ const Page = () => {
                     {/* Header */}
                     <div className="mb-10 text-center">
                       <h1 className="mb-3 text-4xl font-extrabold text-blue-700">
-                        Komunikasi dan Digital
+                        Digitalisasi dan Penyiaran
                       </h1>
                       <p className="text-lg font-medium text-gray-600">
                         Pilar Kemajuan Bangsa di Era Global
