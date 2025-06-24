@@ -1,5 +1,6 @@
 const API_URL =
-  process.env.NEXT_PUBLIC_STRAPI_API_URL || "https://cms.sarifahainunjariyah.com";
+  process.env.NEXT_PUBLIC_STRAPI_API_URL ||
+  "https://cms.sarifahainunjariyah.com";
 
 export function getStrapiURL(path = "") {
   return `${API_URL}${path}`;
@@ -53,6 +54,26 @@ export async function fetchAPI(path: string, options = {}) {
   }
 }
 
+// Get all categories
+export async function getCategories(params = {}) {
+  try {
+    const urlParams = new URLSearchParams({
+      populate: "*",
+      sort: "Name:asc", // Sort alphabetically by name
+      ...params,
+    });
+
+    const path = `/categories?${urlParams}`;
+    console.log("🏷️ Getting categories from path:", path);
+    const response = await fetchAPI(path);
+    console.log("🏷️ Categories response structure:", response);
+    return response;
+  } catch (error) {
+    console.error("❌ Error in getCategories:", error);
+    return { data: [], meta: { pagination: { page: 1, pageCount: 1 } } };
+  }
+}
+
 export async function getArticles(params = {}) {
   try {
     const urlParams = new URLSearchParams({
@@ -66,6 +87,27 @@ export async function getArticles(params = {}) {
     return response;
   } catch (error) {
     console.error("❌ Error in getArticles:", error);
+    return { data: [], meta: { pagination: { page: 1, pageCount: 1 } } };
+  }
+}
+
+// Get articles by category
+export async function getArticlesByCategory(categoryName: string, params = {}) {
+  try {
+    const urlParams = new URLSearchParams({
+      "filters[categories][Name][$eq]": categoryName,
+      populate: "*",
+      sort: "publishDate:desc",
+      ...params,
+    });
+
+    const path = `/articles?${urlParams}`;
+    console.log("🏷️ Getting articles by category from path:", path);
+    const response = await fetchAPI(path);
+    console.log("🏷️ Articles by category response structure:", response);
+    return response;
+  } catch (error) {
+    console.error("❌ Error in getArticlesByCategory:", error);
     return { data: [], meta: { pagination: { page: 1, pageCount: 1 } } };
   }
 }
@@ -184,4 +226,26 @@ export async function getSuaraSajPost(slug: string) {
     console.error("❌ Error in getSuaraSajPost:", error);
     return null;
   }
+}
+
+// Helper function to extract category names from article data
+export function extractCategoryNames(categories: any[]): string[] {
+  if (!categories || !Array.isArray(categories)) return [];
+
+  return categories
+    .map((category) => {
+      // Handle different possible structures
+      return category.Name || category.attributes?.Name || category.name || "";
+    })
+    .filter(Boolean);
+}
+
+// Helper function to check if an article belongs to a category
+export function articleHasCategory(
+  article: any,
+  categoryName: string,
+): boolean {
+  const categories = article.categories || article.attributes?.categories || [];
+  const categoryNames = extractCategoryNames(categories);
+  return categoryNames.includes(categoryName);
 }

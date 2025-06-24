@@ -1,4 +1,4 @@
-import { getArticles } from "@/lib/api/strapi";
+import { getArticles, getArticlesByCategory, getCategories, extractCategoryNames } from "@/lib/api/strapi";
 import { getStrapiMedia } from "@/lib/api/strapi";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -9,15 +9,6 @@ import { formatDate } from "@/lib/utils";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
 import { PaginationControls } from "@/components/PaginatonControls";
 
-const CATEGORIES = [
-  "Demokrasi",
-  "Jakarta",
-  "Keadilan Sosial",
-  "Kepemimpinan",
-  "Krisis Iklim",
-  "Kebangsaan",
-];
-
 export const revalidate = 60;
 
 export default async function BeritaPage({
@@ -25,42 +16,49 @@ export default async function BeritaPage({
 }: {
   searchParams: Promise<{ page?: string; category?: string }>
 }) {
-  const resolvedSearchParams = await searchParams
-  const currentPage = Number(resolvedSearchParams?.page) || 1
-  const currentCategory = resolvedSearchParams?.category
-  const pageSize = 5
+  const resolvedSearchParams = await searchParams;
+  const currentPage = Number(resolvedSearchParams?.page) || 1;
+  const currentCategory = resolvedSearchParams?.category;
+  const pageSize = 5;
 
+  // Fetch categories for the filter
+  let categoriesData;
+  try {
+    categoriesData = await getCategories();
+  } catch (error) {
+    console.error("Error fetching categories:", error);
+    categoriesData = { data: [] };
+  }
+
+  const categories = categoriesData?.data || [];
+
+  // Fetch articles based on category filter
   let articlesData;
   try {
-    // Build base query parameters
-    const queryParams: Record<string, any> = {
+    const queryParams = {
       'pagination[page]': currentPage,
       'pagination[pageSize]': pageSize,
-      'populate': '*',
-      'sort': 'publishDate:desc'
     };
 
-    // Add category filter if selected - using $contains for string field
     if (currentCategory) {
-      queryParams['filters[category][$contains]'] = currentCategory;
       console.log("🔍 Filtering by category:", currentCategory);
+      articlesData = await getArticlesByCategory(currentCategory, queryParams);
+    } else {
+      articlesData = await getArticles(queryParams);
     }
-
-    articlesData = await getArticles(queryParams);
   } catch (error) {
     console.error("Error fetching articles:", error);
+    articlesData = { data: [], meta: { pagination: { page: 1, pageCount: 1 } } };
   }
 
   const articles = articlesData?.data || [];
   const pagination = articlesData?.meta?.pagination;
 
-  // Helper function to get category from article
-  const getCategories = (article: any) => {
-    // Now that category is a simple string, just return it as a single-item array
-    if (article?.category) {
-      return [article.category];
-    }
-    return [];
+  // Helper function to get categories from article
+  const getArticleCategories = (article: any) => {
+    // Handle the many-to-many relationship structure
+    const articleCategories = article?.categories || [];
+    return extractCategoryNames(articleCategories);
   };
 
   // Calculate reading time from content
@@ -89,27 +87,30 @@ export default async function BeritaPage({
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Berita</h1>
           <p className="text-xl text-gray-600 mb-8">Informasi terbaru tentang Sarifah Ainun Jariyah</p>
 
-          {/* Category Filter */}
-          <div className="flex flex-wrap gap-2">
+          {/* Dynamic Category Filter */}
+          <div className="flex flex-wrap gap-2 overflow-x-auto pb-2">
+            {/* "All" button */}
             <Link
               href="/beritas"
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors 
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors whitespace-nowrap
                 ${!currentCategory
                   ? "bg-primary text-white hover:bg-primary/90"
                   : "bg-gray-200 text-gray-800 hover:bg-gray-300"}`}
             >
               Semua
             </Link>
-            {CATEGORIES.map((category) => (
+
+            {/* Dynamic category buttons */}
+            {categories.map((category: any) => (
               <Link
-                key={category}
-                href={`/beritas?category=${category}`}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors 
-                  ${currentCategory === category
+                key={category.documentId}
+                href={`/beritas?category=${encodeURIComponent(category.Name)}`}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors whitespace-nowrap
+                  ${currentCategory === category.Name
                     ? "bg-primary text-white hover:bg-primary/90"
                     : "bg-gray-200 text-gray-800 hover:bg-gray-300"}`}
               >
-                {category}
+                {category.Name}
               </Link>
             ))}
           </div>
@@ -124,16 +125,37 @@ export default async function BeritaPage({
                 ? `Belum ada berita dengan kategori "${currentCategory}".`
                 : "Belum ada berita yang dipublikasikan."}
             </p>
+            {currentCategory && (
+              <Link
+                href="/beritas"
+                className="inline-block mt-4 px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
+              >
+                Lihat Semua Berita
+              </Link>
+            )}
           </div>
         ) : (
           <div className="space-y-6">
+            {/* Results summary */}
+            {currentCategory && (
+              <div className="bg-white rounded-lg p-4 shadow-sm border-l-4 border-primary">
+                <p className="text-gray-700">
+                  Menampilkan <strong>{articles.length}</strong> berita dalam kategori{" "}
+                  <strong>"{currentCategory}"</strong>
+                  {pagination && pagination.total > articles.length && (
+                    <span> dari total <strong>{pagination.total}</strong> berita</span>
+                  )}
+                </p>
+              </div>
+            )}
+
             {articles.map((article: any) => {
               const imageUrl = article?.featuredImage ? getStrapiMedia(article.featuredImage) : null;
-              const categories = getCategories(article);
+              const articleCategories = getArticleCategories(article);
 
               return (
                 <Card
-                  key={article.id}
+                  key={article.documentId || article.id}
                   className="overflow-hidden border-0 !py-0 shadow-md hover:shadow-xl transition-all duration-300 group bg-white"
                 >
                   <div className="flex flex-col md:flex-row">
@@ -166,21 +188,23 @@ export default async function BeritaPage({
                         {/* Category and Date in flex row */}
                         <div className="flex flex-wrap items-center gap-3 mb-3">
                           {/* Categories */}
-                          <div className="flex flex-wrap gap-2">
-                            {categories.map((category: string, index: number) => (
-                              <Link
-                                key={index}
-                                href={`/beritas?category=${category}`}
-                              >
-                                <Badge
-                                  variant="secondary"
-                                  className="bg-primary/10 text-primary hover:bg-primary/20 transition-colors cursor-pointer"
+                          {articleCategories.length > 0 && (
+                            <div className="flex flex-wrap gap-2">
+                              {articleCategories.map((categoryName: string, index: number) => (
+                                <Link
+                                  key={`${article.documentId || article.id}-category-${index}`}
+                                  href={`/beritas?category=${encodeURIComponent(categoryName)}`}
                                 >
-                                  {category}
-                                </Badge>
-                              </Link>
-                            ))}
-                          </div>
+                                  <Badge
+                                    variant="secondary"
+                                    className="bg-primary/10 text-primary hover:bg-primary/20 transition-colors cursor-pointer"
+                                  >
+                                    {categoryName}
+                                  </Badge>
+                                </Link>
+                              ))}
+                            </div>
+                          )}
 
                           {/* Date */}
                           {article?.publishDate && (
@@ -205,7 +229,7 @@ export default async function BeritaPage({
 
                       {/* Full width button */}
                       <Button asChild className="underline bg-gradient-black w-full justify-center !rounded-none !py-6">
-                        <Link href={`/beritas/${article?.slug || article.id}`}>
+                        <Link href={`/beritas/${article?.slug || article.documentId || article.id}`}>
                           Baca Selengkapnya
                           <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
                         </Link>

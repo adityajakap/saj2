@@ -1,4 +1,4 @@
-import { getArticle, getArticles, getStrapiMedia } from "@/lib/api/strapi";
+import { getArticle, getArticles, getStrapiMedia, extractCategoryNames } from "@/lib/api/strapi";
 import { formatDate } from "@/lib/utils";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -26,39 +26,15 @@ interface Article {
   slug: string;
   featuredImage: any;
   publishDate: string;
-  category: string | string[];
+  categories: any[];
   content: any;
 }
 
-// Helper function to extract categories array from Strapi structure
-const getCategories = (article: any) => {
-  if (!article) return [];
-
-  // Handle direct array of categories
-  if (Array.isArray(article.category)) {
-    return article.category;
-  }
-
-  // Handle single category as string
-  if (typeof article.category === 'string') {
-    return [article.category];
-  }
-
-  // Handle categories field with data structure
-  if (article.categories) {
-    if (Array.isArray(article.categories)) {
-      return article.categories;
-    }
-    if (article.categories.data && Array.isArray(article.categories.data)) {
-      return article.categories.data.map((cat: any) => cat.attributes?.name || cat.name);
-    }
-    if (article.categories.data && !Array.isArray(article.categories.data)) {
-      const cat = article.categories.data;
-      return [cat.attributes?.name || cat.name];
-    }
-  }
-
-  return [];
+// Helper function to get category names from article
+const getArticleCategoryNames = (article: any): string[] => {
+  // Use the helper function from our API
+  const categories = article?.categories || [];
+  return extractCategoryNames(categories);
 };
 
 // Calculate reading time from content
@@ -101,7 +77,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
   const imageUrl = getStrapiMedia(article.featuredImage);
   const formattedDate = formatDate(article.publishDate);
-  const categories = getCategories(article);
+  const categoryNames = getArticleCategoryNames(article);
   const readingTime = calculateReadingTime(article.content);
 
   return (
@@ -119,14 +95,18 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
         <div className="flex flex-wrap items-center gap-3 mb-6">
           {/* Categories */}
-          {categories.map((category: string, index: number) => (
-            <Badge
-              key={index}
-              variant="secondary"
-              className="bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
+          {categoryNames.length > 0 && categoryNames.map((categoryName: string, index: number) => (
+            <Link
+              key={`category-${index}-${categoryName}`}
+              href={`/beritas?category=${encodeURIComponent(categoryName)}`}
             >
-              {category}
-            </Badge>
+              <Badge
+                variant="secondary"
+                className="bg-primary/10 text-primary hover:bg-primary/20 transition-colors cursor-pointer"
+              >
+                {categoryName}
+              </Badge>
+            </Link>
           ))}
 
           {/* Date and reading time */}
