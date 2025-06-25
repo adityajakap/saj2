@@ -12,15 +12,16 @@ const jersey15 = Jersey_15({
 export default function SplashScreen() {
   const [isVisible, setIsVisible] = useState(false);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const hasVisited = localStorage.getItem("hasVisited");
-      if (!hasVisited) {
-        setIsVisible(true);
-        localStorage.setItem("hasVisited", "true");
-      }
+useEffect(() => {
+  if (typeof window !== "undefined") {
+    const hasVisited = sessionStorage.getItem("hasVisited");
+    if (!hasVisited) {
+      setIsVisible(true);
+      sessionStorage.setItem("hasVisited", "true");
     }
-  }, []);
+  }
+}, []);
+
 
   const handleEnter = () => {
     setIsVisible(false);
