@@ -26,7 +26,6 @@ const Page = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Deteksi perangkat mobile
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
