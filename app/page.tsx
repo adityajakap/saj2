@@ -433,6 +433,7 @@ const Page = () => {
                   height={210}
                   className="hover-outline cursor-pointer"
                   priority
+                  unoptimized
                 />
               </div>
 
